@@ -9,7 +9,7 @@ interface Props {
 
 export const ElementNavigation: React.FC<Props> = ({ iconName, onClick }) => {
   return (
-    <TouchableOpacity style={style.container} onPress={onClick}>
+    <TouchableOpacity style={style.container} onPress={() => onClick()}>
       <Feather name={iconName as any} size={30} color="white" />
     </TouchableOpacity>
   );

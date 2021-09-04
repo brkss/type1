@@ -1,13 +1,21 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ElementNavigation } from "./Navigation/Element";
 
-export const Navigation: React.FC = () => {
+interface Props {
+  navigation: any;
+}
+
+export const Navigation: React.FC<Props> = ({ navigation }) => {
+  const navigate = (path: string) => {
+    navigation.navigate(path);
+  };
+
   return (
     <View style={style.container}>
-      <ElementNavigation onClick={() => {}} iconName="home" />
+      <ElementNavigation onClick={() => navigate("home")} iconName="home" />
       <ElementNavigation onClick={() => {}} iconName="calendar" />
-      <ElementNavigation onClick={() => {}} iconName="user" />
+      <ElementNavigation onClick={() => navigate("login")} iconName="user" />
     </View>
   );
 };

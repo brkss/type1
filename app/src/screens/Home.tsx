@@ -20,7 +20,7 @@ export const Home: React.FC<any> = ({ navigation }) => {
   return (
     <View style={style.container}>
       <View style={style.navigationContainer}>
-        <Navigation />
+        <Navigation navigation={navigation} />
       </View>
       <View style={style.contentContainer}>
         <Input
@@ -48,7 +48,7 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   contentContainer: {
-    flex: 0.8,
+    flex: 0.6,
     alignItems: "center",
     justifyContent: "center",
   },
