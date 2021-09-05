@@ -9,39 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-const typeorm_1 = require("typeorm");
+exports.DefaultAuthResponse = void 0;
 const type_graphql_1 = require("type-graphql");
-let User = class User extends typeorm_1.BaseEntity {
+let DefaultAuthResponse = class DefaultAuthResponse {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
-    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
-    __metadata("design:type", String)
-], User.prototype, "id", void 0);
+    __metadata("design:type", Boolean)
+], DefaultAuthResponse.prototype, "status", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], User.prototype, "name", void 0);
+], DefaultAuthResponse.prototype, "message", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "username", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-User = __decorate([
-    (0, type_graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)("users")
-], User);
-exports.User = User;
-//# sourceMappingURL=User.js.map
+], DefaultAuthResponse.prototype, "token", void 0);
+DefaultAuthResponse = __decorate([
+    (0, type_graphql_1.ObjectType)()
+], DefaultAuthResponse);
+exports.DefaultAuthResponse = DefaultAuthResponse;
+//# sourceMappingURL=default.response.js.map
