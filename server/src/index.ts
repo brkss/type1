@@ -15,8 +15,9 @@ import { UserResolver } from "./resolvers/user.resolver";
       resolvers: [UserResolver],
       validate: true,
     }),
+    context: ({ req, res }) => ({ req, res }),
   });
-  await apolloServer.start();
+  // await apolloServer.start();
   apolloServer.applyMiddleware({ app });
 
   app.listen(4000, () => {

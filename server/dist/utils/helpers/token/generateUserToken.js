@@ -9,7 +9,9 @@ const generateUserAccessToken = (user) => {
     const payload = {
         uuid: user.id,
     };
-    const token = jsonwebtoken_1.default.sign(payload, process.env.ACCESS_TOKEN_SECRET);
+    const token = jsonwebtoken_1.default.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "15m",
+    });
     return token;
 };
 exports.generateUserAccessToken = generateUserAccessToken;
@@ -17,7 +19,9 @@ const generateUserRefreshToken = (user) => {
     const payload = {
         uuid: user.id,
     };
-    const token = jsonwebtoken_1.default.sign(payload, process.env.REFRESH_TOKEN_SECRET);
+    const token = jsonwebtoken_1.default.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
+        expiresIn: "7d",
+    });
     return token;
 };
 exports.generateUserRefreshToken = generateUserRefreshToken;

@@ -19,8 +19,8 @@ const user_resolver_1 = require("./resolvers/user.resolver");
             resolvers: [user_resolver_1.UserResolver],
             validate: true,
         }),
+        context: ({ req, res }) => ({ req, res }),
     });
-    await apolloServer.start();
     apolloServer.applyMiddleware({ app });
     app.listen(4000, () => {
         console.log("server runing on http://localhost:4000");

@@ -1,10 +1,15 @@
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
+import { Resolver, Query, Mutation, Arg, Ctx } from "type-graphql";
 import { DefaultAuthResponse } from "../utils/responses/default.response";
 import { RegisterUserInput } from "../utils/inputs/user/register.input";
 import { LoginUserInput } from "../utils/inputs/user/login.input";
 import { User } from "../entity/User";
-import { generateUserAccessToken } from "../utils/helpers/token/generateUserToken";
+import {
+  generateUserAccessToken,
+  generateUserRefreshToken,
+} from "../utils/helpers/token/generateUserToken";
 import bc from "bcrypt";
+import { ContextApollo } from "../utils/types/Context";
+import { sendUserRefreshToken } from "../utils/helpers/token/sendRefreshToken";
 
 @Resolver()
 export class UserResolver {
@@ -15,7 +20,7 @@ export class UserResolver {
 
   // login !
   @Mutation(() => DefaultAuthResponse)
-  async login(@Arg("data") data: LoginUserInput) {
+  async login(@Arg("data") data: LoginUserInput, @Ctx() ctx: ContextApollo) {
     // validate
     if (!data.ident || !data.password) {
       return {
@@ -41,6 +46,7 @@ export class UserResolver {
         };
       }
       // login successfuly
+      sendUserRefreshToken(ctx.res, generateUserRefreshToken(user));
       return {
         status: true,
         message: "Login Successfuly !",
@@ -57,7 +63,8 @@ export class UserResolver {
   // register !
   @Mutation(() => DefaultAuthResponse)
   async register(
-    @Arg("data") data: RegisterUserInput
+    @Arg("data") data: RegisterUserInput,
+    @Ctx() ctx: ContextApollo
   ): Promise<DefaultAuthResponse> {
     // validate
     if (!data || !data.name || !data.email || !data.password) {
@@ -73,9 +80,14 @@ export class UserResolver {
       user.username = data.username || data.email.split("@")[0];
       user.password = await bc.hash(data.password, 5);
       await user.save();
+
+      // user registered successfuly !
+      const _user = await User.findOne({ where: { email: data.email } });
+      sendUserRefreshToken(ctx.res, generateUserRefreshToken(_user!));
       return {
         status: true,
         message: "User created successfuly !",
+        token: generateUserAccessToken(_user!),
       };
     } catch (e) {
       console.log("error while creating user: ", e);
