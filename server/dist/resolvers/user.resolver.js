@@ -21,7 +21,7 @@ const default_response_1 = require("../utils/responses/default.response");
 const register_input_1 = require("../utils/inputs/user/register.input");
 const login_input_1 = require("../utils/inputs/user/login.input");
 const User_1 = require("../entity/User");
-const generateAccessToken_1 = require("../utils/helpers/token/generateAccessToken");
+const generateUserToken_1 = require("../utils/helpers/token/generateUserToken");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 let UserResolver = class UserResolver {
     async users() {
@@ -54,7 +54,7 @@ let UserResolver = class UserResolver {
             return {
                 status: true,
                 message: "Login Successfuly !",
-                token: (0, generateAccessToken_1.generateUserAccessToken)(user),
+                token: (0, generateUserToken_1.generateUserAccessToken)(user),
             };
         }
         catch (e) {

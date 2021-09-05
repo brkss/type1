@@ -3,7 +3,7 @@ import { DefaultAuthResponse } from "../utils/responses/default.response";
 import { RegisterUserInput } from "../utils/inputs/user/register.input";
 import { LoginUserInput } from "../utils/inputs/user/login.input";
 import { User } from "../entity/User";
-import { generateUserAccessToken } from "../utils/helpers/token/generateAccessToken";
+import { generateUserAccessToken } from "../utils/helpers/token/generateUserToken";
 import bc from "bcrypt";
 
 @Resolver()

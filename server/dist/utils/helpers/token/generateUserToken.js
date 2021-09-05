@@ -9,7 +9,6 @@ const generateUserAccessToken = (user) => {
     const payload = {
         uuid: user.id,
     };
-    const tmp_access_secret = "fdghbndslkfjbjadsjlklwertyXGFCVBNMLGh3456789";
     const token = jsonwebtoken_1.default.sign(payload, process.env.ACCESS_TOKEN_SECRET);
     return token;
 };
@@ -22,4 +21,4 @@ const generateUserRefreshToken = (user) => {
     return token;
 };
 exports.generateUserRefreshToken = generateUserRefreshToken;
-//# sourceMappingURL=generateAccessToken.js.map
+//# sourceMappingURL=generateUserToken.js.map
