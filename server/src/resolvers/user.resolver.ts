@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Arg, Ctx } from "type-graphql";
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Arg,
+  Ctx,
+  UseMiddleware,
+} from "type-graphql";
 import { DefaultAuthResponse } from "../utils/responses/default.response";
 import { RegisterUserInput } from "../utils/inputs/user/register.input";
 import { LoginUserInput } from "../utils/inputs/user/login.input";
@@ -10,12 +17,30 @@ import {
 import bc from "bcrypt";
 import { ContextApollo } from "../utils/types/Context";
 import { sendUserRefreshToken } from "../utils/helpers/token/sendRefreshToken";
+import { isUserAuth } from "../utils/middlewares/auth.mw";
 
 @Resolver()
 export class UserResolver {
   @Query(() => [User])
   async users() {
     return await User.find();
+  }
+
+  // single user
+  @UseMiddleware(isUserAuth)
+  @Query(() => User, { nullable: true })
+  async user(@Ctx() ctx: ContextApollo) {
+    try {
+      const user = await User.findOne({ where: { id: ctx.payload.uuid } });
+      if (!user) {
+        console.log("user not found !");
+        return null;
+      }
+      return user;
+    } catch (e) {
+      console.log("error while finding the user : ", e);
+      return null;
+    }
   }
 
   // login !

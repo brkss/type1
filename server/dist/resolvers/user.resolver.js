@@ -24,9 +24,24 @@ const User_1 = require("../entity/User");
 const generateUserToken_1 = require("../utils/helpers/token/generateUserToken");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const sendRefreshToken_1 = require("../utils/helpers/token/sendRefreshToken");
+const auth_mw_1 = require("../utils/middlewares/auth.mw");
 let UserResolver = class UserResolver {
     async users() {
         return await User_1.User.find();
+    }
+    async user(ctx) {
+        try {
+            const user = await User_1.User.findOne({ where: { id: ctx.payload.uuid } });
+            if (!user) {
+                console.log("user not found !");
+                return null;
+            }
+            return user;
+        }
+        catch (e) {
+            console.log("error while finding the user : ", e);
+            return null;
+        }
     }
     async login(data, ctx) {
         if (!data.ident || !data.password) {
@@ -107,6 +122,14 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "users", null);
+__decorate([
+    (0, type_graphql_1.UseMiddleware)(auth_mw_1.isUserAuth),
+    (0, type_graphql_1.Query)(() => User_1.User, { nullable: true }),
+    __param(0, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "user", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => default_response_1.DefaultAuthResponse),
     __param(0, (0, type_graphql_1.Arg)("data")),
