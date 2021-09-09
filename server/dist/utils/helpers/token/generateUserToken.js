@@ -18,6 +18,7 @@ exports.generateUserAccessToken = generateUserAccessToken;
 const generateUserRefreshToken = (user) => {
     const payload = {
         uuid: user.id,
+        version: user.tokenVersion,
     };
     const token = jsonwebtoken_1.default.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
         expiresIn: "7d",
