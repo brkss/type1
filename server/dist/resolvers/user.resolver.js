@@ -29,6 +29,21 @@ let UserResolver = class UserResolver {
     async users() {
         return await User_1.User.find();
     }
+    async revokeToken(uid) {
+        try {
+            const user = await User_1.User.findOne({ where: { id: uid } });
+            if (!user) {
+                return false;
+            }
+            user.tokenVersion = user.tokenVersion + 1;
+            await user.save();
+            return true;
+        }
+        catch (e) {
+            console.log("something  went wrong revoking user password !", e);
+            return false;
+        }
+    }
     async user(ctx) {
         try {
             const user = await User_1.User.findOne({ where: { id: ctx.payload.uuid } });
@@ -122,6 +137,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "users", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    __param(0, (0, type_graphql_1.Arg)("uid")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "revokeToken", null);
 __decorate([
     (0, type_graphql_1.UseMiddleware)(auth_mw_1.isUserAuth),
     (0, type_graphql_1.Query)(() => User_1.User, { nullable: true }),

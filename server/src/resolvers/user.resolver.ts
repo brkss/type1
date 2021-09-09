@@ -26,6 +26,23 @@ export class UserResolver {
     return await User.find();
   }
 
+  //@UseMiddleware(isUserAuth)
+  @Mutation(() => Boolean)
+  async revokeToken(@Arg("uid") uid: string): Promise<boolean> {
+    try {
+      const user = await User.findOne({ where: { id: uid } });
+      if (!user) {
+        return false;
+      }
+      user!.tokenVersion = user!.tokenVersion + 1;
+      await user.save();
+      return true;
+    } catch (e) {
+      console.log("something  went wrong revoking user password !", e);
+      return false;
+    }
+  }
+
   // single user
   @UseMiddleware(isUserAuth)
   @Query(() => User, { nullable: true })
