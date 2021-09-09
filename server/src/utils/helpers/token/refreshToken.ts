@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
 import { User } from "../../../entity/User";
+import {
+  generateUserRefreshToken,
+  generateUserAccessToken,
+} from "./generateUserToken";
+import { sendUserRefreshToken } from "./sendRefreshToken";
 import jwt from "jsonwebtoken";
 
 export const refreshToken = async (req: Request, res: Response) => {
@@ -51,9 +56,10 @@ export const refreshToken = async (req: Request, res: Response) => {
   }
 
   // token is valid
-
+  const new_token = generateUserRefreshToken(user!);
+  sendUserRefreshToken(res, new_token);
   res.send({
     status: true,
-    token: "wertyuiop",
+    token: generateUserAccessToken(user!),
   });
 };

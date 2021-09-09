@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.refreshToken = void 0;
 const User_1 = require("../../../entity/User");
+const generateUserToken_1 = require("./generateUserToken");
+const sendRefreshToken_1 = require("./sendRefreshToken");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const refreshToken = async (req, res) => {
     console.log("user cookie : ", req.cookies.uid);
@@ -47,9 +49,11 @@ const refreshToken = async (req, res) => {
             token: "invalid version !",
         });
     }
+    const new_token = (0, generateUserToken_1.generateUserRefreshToken)(user);
+    (0, sendRefreshToken_1.sendUserRefreshToken)(res, new_token);
     res.send({
         status: true,
-        token: "wertyuiop",
+        token: (0, generateUserToken_1.generateUserAccessToken)(user),
     });
 };
 exports.refreshToken = refreshToken;
