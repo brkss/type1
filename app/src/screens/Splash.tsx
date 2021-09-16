@@ -4,7 +4,7 @@ import { Button } from "../components";
 
 const { width } = Dimensions.get("window");
 
-export const Splash: React.FC = () => {
+export const Splash: React.FC<any> = ({ navigation }) => {
   return (
     <View style={style.container}>
       <View style={style.wrap}>
@@ -15,7 +15,10 @@ export const Splash: React.FC = () => {
           {"\n"}Related Diseases 🩺
         </Text>
         <View style={style.buttonContainer}>
-          <Button title={"Access to my account !"} onClick={() => {}} />
+          <Button
+            title={"Access to my account !"}
+            onClick={() => navigation.navigate("login")}
+          />
         </View>
       </View>
     </View>
