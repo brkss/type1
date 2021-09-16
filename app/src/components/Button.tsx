@@ -17,15 +17,17 @@ export const Button: React.FC<Props> = ({ title, onClick }) => {
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: "#353535",
+    backgroundColor: "#434343",
     padding: 10,
     height: 40,
-    width: width * 0.9,
+    width: "100%",
     alignItems: "center",
-    borderRadius: 4,
+    borderRadius: 7,
     marginTop: 15,
   },
   title: {
     color: "white",
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });
