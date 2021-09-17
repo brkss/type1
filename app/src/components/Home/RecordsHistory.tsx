@@ -33,7 +33,7 @@ export const RecordsHistory: React.FC = () => {
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   pageTitle: {
     fontSize: 30,

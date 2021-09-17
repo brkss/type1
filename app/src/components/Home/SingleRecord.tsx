@@ -23,10 +23,10 @@ export const SingleRecord: React.FC = () => {
         {/* Single Record */}
         {/* Single Record */}
         <View style={style.recordContainer}>
-          <Text style={style.recordLabel}>carbs taken </Text>
+          <Text style={style.recordLabel}>insulin </Text>
           <View style={style.recordValueContainer}>
-            <Text style={style.recordValue}>205</Text>
-            <Text style={style.recordUnit}>grams</Text>
+            <Text style={style.recordValue}>14</Text>
+            <Text style={style.recordUnit}>units</Text>
           </View>
         </View>
         {/* Single Record */}
@@ -34,10 +34,10 @@ export const SingleRecord: React.FC = () => {
       <View style={style.records}>
         {/* Single Record */}
         <View style={style.recordContainer}>
-          <Text style={style.recordLabel}>fast insulin</Text>
+          <Text style={style.recordLabel}>carbs taken</Text>
           <View style={style.recordValueContainer}>
-            <Text style={style.recordValue}>130</Text>
-            <Text style={style.recordUnit}>mg/dl</Text>
+            <Text style={style.recordValue}>203</Text>
+            <Text style={style.recordUnit}>grams</Text>
           </View>
         </View>
         {/* Single Record */}
@@ -45,8 +45,8 @@ export const SingleRecord: React.FC = () => {
         <View style={style.recordContainer}>
           <Text style={style.recordLabel}>corection</Text>
           <View style={style.recordValueContainer}>
-            <Text style={style.recordValue}>130</Text>
-            <Text style={style.recordUnit}> mg/dl</Text>
+            <Text style={style.recordValue}>0</Text>
+            <Text style={style.recordUnit}> units</Text>
           </View>
         </View>
         {/* Single Record */}
@@ -66,6 +66,7 @@ const style = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginRight: 15,
+    width: "100%",
   },
   labelContainer: {
     alignSelf: "flex-start",
