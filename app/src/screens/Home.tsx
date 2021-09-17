@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
-import { RecordsHistory, DemonsHome } from "../components";
+import { RecordsHistory, DemonsHome, HistoryHome } from "../components";
 
 export const Home: React.FC = () => {
   return (
@@ -9,6 +9,7 @@ export const Home: React.FC = () => {
         <View style={style.wrap}>
           <RecordsHistory />
           <DemonsHome />
+          <HistoryHome />
         </View>
       </View>
     </ScrollView>
