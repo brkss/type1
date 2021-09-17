@@ -18,7 +18,7 @@ const { width } = Dimensions.get("window");
 export const Input: React.FC<Props> = ({ onChangeText, label, password }) => {
   return (
     <SafeAreaView style={style.container}>
-      <Text style={style.label}>{label} :</Text>
+      <Text style={style.label}>{label} </Text>
       <TextInput
         secureTextEntry={password}
         style={style.input}
@@ -34,15 +34,17 @@ const style = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: width * 0.9,
-    color: "white",
-    backgroundColor: "#212121",
+    width: "100%",
+    color: "black",
+    backgroundColor: "#D8D8D8",
     padding: 5,
     paddingHorizontal: 10,
     borderRadius: 5,
   },
   label: {
-    color: "white",
-    marginBottom: 7,
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 14,
+    marginBottom: 2,
   },
 });
