@@ -23,10 +23,10 @@ export const SingleRecord: React.FC = () => {
         {/* Single Record */}
         {/* Single Record */}
         <View style={style.recordContainer}>
-          <Text style={style.recordLabel}>before eating</Text>
+          <Text style={style.recordLabel}>carbs taken </Text>
           <View style={style.recordValueContainer}>
-            <Text style={style.recordValue}>130</Text>
-            <Text style={style.recordUnit}>mg/dl</Text>
+            <Text style={style.recordValue}>205</Text>
+            <Text style={style.recordUnit}>grams</Text>
           </View>
         </View>
         {/* Single Record */}
@@ -34,7 +34,7 @@ export const SingleRecord: React.FC = () => {
       <View style={style.records}>
         {/* Single Record */}
         <View style={style.recordContainer}>
-          <Text style={style.recordLabel}>before eating</Text>
+          <Text style={style.recordLabel}>fast insulin</Text>
           <View style={style.recordValueContainer}>
             <Text style={style.recordValue}>130</Text>
             <Text style={style.recordUnit}>mg/dl</Text>
@@ -43,13 +43,16 @@ export const SingleRecord: React.FC = () => {
         {/* Single Record */}
         {/* Single Record */}
         <View style={style.recordContainer}>
-          <Text style={style.recordLabel}>before eating</Text>
+          <Text style={style.recordLabel}>corection</Text>
           <View style={style.recordValueContainer}>
             <Text style={style.recordValue}>130</Text>
-            <Text style={style.recordUnit}>mg/dl</Text>
+            <Text style={style.recordUnit}> mg/dl</Text>
           </View>
         </View>
         {/* Single Record */}
+      </View>
+      <View style={style.dateContainer}>
+        <Text style={style.date}>3 Hours ago.</Text>
       </View>
     </View>
   );
@@ -57,11 +60,12 @@ export const SingleRecord: React.FC = () => {
 
 const style = StyleSheet.create({
   container: {
+    flex: 1,
     minHeight: 100,
     backgroundColor: "#EFEBE8",
     padding: 10,
     borderRadius: 10,
-    width: "100%",
+    marginRight: 15,
   },
   labelContainer: {
     borderRadius: 50,
@@ -92,6 +96,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 12,
+    justifyContent: "space-between",
   },
   recordContainer: {
     marginRight: 10,
@@ -110,5 +115,11 @@ const style = StyleSheet.create({
   },
   recordUnit: {
     fontSize: 10,
+  },
+  dateContainer: {
+    marginTop: 10,
+  },
+  date: {
+    fontSize: 12,
   },
 });
