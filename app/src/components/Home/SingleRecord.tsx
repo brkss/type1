@@ -68,6 +68,7 @@ const style = StyleSheet.create({
     marginRight: 15,
   },
   labelContainer: {
+    alignSelf: "flex-start",
     borderRadius: 50,
     backgroundColor: "#BEE193",
     paddingHorizontal: 10,
