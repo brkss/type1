@@ -9,7 +9,7 @@ export const RecordsHistory: React.FC = () => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ marginTop: 20, paddingRight: 200, flex: 1 }}
+        style={{ marginTop: 20, paddingRight: 200 }}
       >
         <SingleRecord />
         <SingleRecord />

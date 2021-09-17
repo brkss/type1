@@ -43,7 +43,7 @@ export const SingleRecord: React.FC = () => {
         {/* Single Record */}
         {/* Single Record */}
         <View style={style.recordContainer}>
-          <Text style={style.recordLabel}>corection</Text>
+          <Text style={style.recordLabel}>insulin</Text>
           <View style={style.recordValueContainer}>
             <Text style={style.recordValue}>0</Text>
             <Text style={style.recordUnit}> units</Text>
@@ -85,11 +85,11 @@ const style = StyleSheet.create({
     flexWrap: "wrap",
   },
   bgRecord: {
-    fontSize: 20,
+    fontSize: 27,
     fontWeight: "bold",
   },
   bgUnit: {
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: "bold",
     bottom: 0,
   },
@@ -104,7 +104,7 @@ const style = StyleSheet.create({
     marginRight: 10,
   },
   recordLabel: {
-    fontSize: 12,
+    fontSize: 15,
     opacity: 0.9,
   },
   recordValueContainer: {
@@ -112,7 +112,7 @@ const style = StyleSheet.create({
     flexWrap: "wrap",
   },
   recordValue: {
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: "bold",
   },
   recordUnit: {

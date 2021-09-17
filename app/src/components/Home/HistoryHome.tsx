@@ -43,8 +43,8 @@ export const HistoryHome: React.FC = () => {
         style={{ marginTop: 15 }}
         showsHorizontalScrollIndicator={false}
       >
-        {days.map((day) => (
-          <HistoryDay {...day} />
+        {days.map((day, key) => (
+          <HistoryDay key={key} {...day} />
         ))}
       </ScrollView>
     </View>

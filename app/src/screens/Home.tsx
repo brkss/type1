@@ -8,8 +8,8 @@ export const Home: React.FC = () => {
       <View style={style.container}>
         <View style={style.wrap}>
           <RecordsHistory />
-          <DemonsHome />
           <HistoryHome />
+          <DemonsHome />
         </View>
       </View>
     </ScrollView>
