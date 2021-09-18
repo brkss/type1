@@ -66,7 +66,7 @@ const style = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginRight: 15,
-    width: "100%",
+    width: 225,
   },
   labelContainer: {
     alignSelf: "flex-start",
