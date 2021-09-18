@@ -12,9 +12,9 @@ export const Home: React.FC = () => {
     <ScrollView>
       <View style={style.container}>
         <View style={style.wrap}>
-          <CreateRecordHome />
-          <RecordsHistory />
           <HistoryHome />
+          <RecordsHistory />
+          <CreateRecordHome />
           <DemonsHome />
         </View>
       </View>

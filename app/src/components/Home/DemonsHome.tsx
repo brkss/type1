@@ -4,20 +4,20 @@ import { AntDesign } from "@expo/vector-icons";
 
 const activeDemons = [
   {
-    name: "Insulin",
+    name: "👹 Insulin",
   },
   {
-    name: "Thyroid",
+    name: "👹 Thyroid",
   },
   {
-    name: "Sleep",
+    name: "👹 Sleep",
   },
 ];
 
 export const DemonsHome: React.FC = () => {
   return (
     <View style={style.container}>
-      <Text style={style.title}>Demons are working</Text>
+      <Text style={style.title}>Demons are active.</Text>
       <Text style={style.subTitle}>
         View demons <AntDesign name="arrowright" size={18} color="black" />
       </Text>
