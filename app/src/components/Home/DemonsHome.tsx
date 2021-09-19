@@ -22,8 +22,8 @@ export const DemonsHome: React.FC = () => {
         View demons <AntDesign name="arrowright" size={18} color="black" />
       </Text>
       <View style={style.demonsContainer}>
-        {activeDemons.map((demon) => (
-          <View style={style.demon}>
+        {activeDemons.map((demon, key) => (
+          <View key={key} style={style.demon}>
             <Text style={style.demonName}>{demon.name}</Text>
           </View>
         ))}

@@ -6,8 +6,8 @@ import { AuthStackNavigation } from "./authnavigation";
 export const MainNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      {/*<AuthStackNavigation />*/}
-      <AppNavigationStack />
+      <AuthStackNavigation />
+      {/* <AppNavigationStack /> */}
     </NavigationContainer>
   );
 };
