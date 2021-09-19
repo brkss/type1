@@ -26,6 +26,9 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const sendRefreshToken_1 = require("../utils/helpers/token/sendRefreshToken");
 const auth_mw_1 = require("../utils/middlewares/auth.mw");
 let UserResolver = class UserResolver {
+    ping() {
+        return "pong";
+    }
     async users() {
         return await User_1.User.find();
     }
@@ -131,6 +134,12 @@ let UserResolver = class UserResolver {
         };
     }
 };
+__decorate([
+    (0, type_graphql_1.Query)(() => String),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UserResolver.prototype, "ping", null);
 __decorate([
     (0, type_graphql_1.Query)(() => [User_1.User]),
     __metadata("design:type", Function),

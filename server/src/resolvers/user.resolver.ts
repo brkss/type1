@@ -21,6 +21,11 @@ import { isUserAuth } from "../utils/middlewares/auth.mw";
 
 @Resolver()
 export class UserResolver {
+  @Query(() => String)
+  ping() {
+    return "pong";
+  }
+
   @Query(() => [User])
   async users() {
     return await User.find();
