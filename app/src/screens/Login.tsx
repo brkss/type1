@@ -1,15 +1,36 @@
 import React from "react";
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 import { Button, Input } from "../components";
+import { useLoginMutation } from "../generated/graphql";
+import { getToken, setToken } from "../utils/auth/token";
 
 const { width } = Dimensions.get("window");
 
 export const Login: React.FC<any> = ({ navigation }) => {
   const [username, SetUsername] = React.useState("");
   const [password, SetPassword] = React.useState("");
+  const [login] = useLoginMutation();
 
-  const validateLogin = () => {
+  const handleLogin = () => {
     console.log(`username : ${username} \t password : ${password}`);
+    // validate data
+    if (!username || !password) {
+      alert("Invalid Data !");
+      return;
+    }
+    login({
+      variables: {
+        ident: username,
+        password: password,
+      },
+    }).then((res) => {
+      if (res.data) {
+        if (res.data!.login.status == true) {
+          setToken(res.data.login.token!);
+        }
+        console.log("res => ", res.data!.login);
+      }
+    });
     navigation.navigate("home");
   };
 
@@ -27,7 +48,7 @@ export const Login: React.FC<any> = ({ navigation }) => {
             onChangeText={(text) => SetPassword(text)}
             password={true}
           />
-          <Button title="Login" onClick={() => validateLogin()} />
+          <Button title="Login" onClick={() => handleLogin()} />
         </View>
       </View>
     </View>

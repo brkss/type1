@@ -20,6 +20,8 @@ export const Input: React.FC<Props> = ({ onChangeText, label, password }) => {
     <SafeAreaView style={style.container}>
       <Text style={style.label}>{label} </Text>
       <TextInput
+        autoCorrect={false}
+        autoCapitalize={"none"}
         secureTextEntry={password}
         style={style.input}
         onChangeText={(text) => onChangeText(text)}
