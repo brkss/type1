@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 import { Button, Input } from "../components";
 import { useLoginMutation } from "../generated/graphql";
-import { getToken, setToken } from "../utils/auth/token";
+import { getToken, setToken, _token } from "../utils/auth/token";
 
 const { width } = Dimensions.get("window");
 
@@ -10,6 +10,7 @@ export const Login: React.FC<any> = ({ navigation }) => {
   const [username, SetUsername] = React.useState("");
   const [password, SetPassword] = React.useState("");
   const [login] = useLoginMutation();
+  const { token } = React.useContext(_token);
 
   const handleLogin = () => {
     console.log(`username : ${username} \t password : ${password}`);
@@ -26,12 +27,14 @@ export const Login: React.FC<any> = ({ navigation }) => {
     }).then((res) => {
       if (res.data) {
         if (res.data!.login.status == true) {
+          console.log("Token saved !");
           setToken(res.data.login.token!);
+          //token = res.data.login.token!;
         }
-        console.log("res => ", res.data!.login);
+        //console.log("res => ", res.data!.login);
       }
     });
-    navigation.navigate("home");
+    //navigation.navigate("home");
   };
 
   return (

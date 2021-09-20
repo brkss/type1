@@ -6,9 +6,16 @@ import { getToken } from "../utils/auth/token";
 import * as secureStorage from "expo-secure-store";
 
 export const MainNavigation: React.FC = () => {
+  const [token, SetToken] = React.useState<string>();
+  const bootstrap = () => {
+    SetToken(getToken());
+  };
+  React.useEffect(() => {
+    bootstrap();
+  }, []);
   return (
     <NavigationContainer>
-      {getToken() ? <AppNavigationStack /> : <AuthStackNavigation />}
+      {token ? <AppNavigationStack /> : <AuthStackNavigation />}
     </NavigationContainer>
   );
 };
