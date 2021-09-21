@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, RouteProps } from "react-router-dom";
 import { routes } from "./utils/config/routes";
+import { Navigation } from "./components";
 
 export const Application: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Navigation />
         {routes.map((route, key) => (
           <Route
             key={key}
