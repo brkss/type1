@@ -1,3 +1,11 @@
 import React from "react";
 
-export const token = React.createContext<string | null>(null);
+interface IAuthContext {
+  signIn: (token: string) => Promise<void>;
+  signOut: () => void;
+}
+
+export const AuthContext = React.createContext<IAuthContext>({
+  signIn: async () => {},
+  signOut: () => {},
+});
