@@ -1,9 +1,10 @@
 import React from "react";
+import { Intro } from "../components/Home";
 
 export const Home: React.FC = () => {
   return (
     <>
-      <h1>Hello from Home</h1>
+      <Intro />
     </>
   );
 };

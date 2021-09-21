@@ -6,12 +6,18 @@ export const Navigation: React.FC = () => {
     <Box p={"15px"}>
       <Grid templateColumns="repeat(6, 1fr)">
         <GridItem colSpan={3} textAlign={"left"}>
-          <Heading fontWeight={"bold"} fontSize={"24px"}>
+          <Heading
+            fontWeight={"bold"}
+            fontSize={{ md: "2rem", base: "1.2rem" }}
+          >
             Open Type One.
           </Heading>
         </GridItem>
         <GridItem colSpan={3} textAlign={"right"}>
-          <Heading fontWeight={"bold"} fontSize={"18px"}>
+          <Heading
+            fontWeight={"bold"}
+            fontSize={{ md: "2rem", base: "1.2rem" }}
+          >
             ✨ Available on iOS
           </Heading>
         </GridItem>

@@ -6,8 +6,8 @@ import { Navigation } from "./components";
 export const Application: React.FC = () => {
   return (
     <BrowserRouter>
+      <Navigation />
       <Switch>
-        <Navigation />
         {routes.map((route, key) => (
           <Route
             key={key}
