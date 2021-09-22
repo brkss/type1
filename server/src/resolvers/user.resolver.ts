@@ -98,6 +98,7 @@ export class UserResolver {
         status: true,
         message: "Login Successfuly !",
         token: generateUserAccessToken(user),
+        refreshToken: generateUserRefreshToken(user),
       };
     } catch (e) {
       console.log("something went wrong on login !", e);
@@ -143,8 +144,5 @@ export class UserResolver {
         message: "Somethinf went wrong while creating user !",
       };
     }
-    return {
-      status: false,
-    };
   }
 }

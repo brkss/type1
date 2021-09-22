@@ -90,6 +90,7 @@ let UserResolver = class UserResolver {
                 status: true,
                 message: "Login Successfuly !",
                 token: (0, generateUserToken_1.generateUserAccessToken)(user),
+                refreshToken: (0, generateUserToken_1.generateUserRefreshToken)(user),
             };
         }
         catch (e) {
@@ -129,9 +130,6 @@ let UserResolver = class UserResolver {
                 message: "Somethinf went wrong while creating user !",
             };
         }
-        return {
-            status: false,
-        };
     }
 };
 __decorate([

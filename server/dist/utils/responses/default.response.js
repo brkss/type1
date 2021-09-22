@@ -25,6 +25,10 @@ __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], DefaultAuthResponse.prototype, "token", void 0);
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], DefaultAuthResponse.prototype, "refreshToken", void 0);
 DefaultAuthResponse = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], DefaultAuthResponse);

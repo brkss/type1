@@ -10,4 +10,7 @@ export class DefaultAuthResponse {
 
   @Field({ nullable: true })
   token?: string;
+
+  @Field({ nullable: true })
+  refreshToken?: string;
 }
