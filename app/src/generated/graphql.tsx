@@ -17,6 +17,7 @@ export type Scalars = {
 export type DefaultAuthResponse = {
   __typename?: 'DefaultAuthResponse';
   message?: Maybe<Scalars['String']>;
+  refreshToken?: Maybe<Scalars['String']>;
   status: Scalars['Boolean'];
   token?: Maybe<Scalars['String']>;
 };
@@ -29,6 +30,7 @@ export type LoginUserInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   login: DefaultAuthResponse;
+  refreshToken: DefaultAuthResponse;
   register: DefaultAuthResponse;
   revokeToken: Scalars['Boolean'];
 };
@@ -36,6 +38,11 @@ export type Mutation = {
 
 export type MutationLoginArgs = {
   data: LoginUserInput;
+};
+
+
+export type MutationRefreshTokenArgs = {
+  refresh_token: Scalars['String'];
 };
 
 
@@ -77,7 +84,14 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'DefaultAuthResponse', status: boolean, message?: Maybe<string>, token?: Maybe<string> } };
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'DefaultAuthResponse', status: boolean, message?: Maybe<string>, token?: Maybe<string>, refreshToken?: Maybe<string> } };
+
+export type RefreshTokenMutationVariables = Exact<{
+  token: Scalars['String'];
+}>;
+
+
+export type RefreshTokenMutation = { __typename?: 'Mutation', refreshToken: { __typename?: 'DefaultAuthResponse', status: boolean, token?: Maybe<string>, refreshToken?: Maybe<string> } };
 
 export type PingQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -91,6 +105,7 @@ export const LoginDocument = gql`
     status
     message
     token
+    refreshToken
   }
 }
     `;
@@ -121,6 +136,41 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const RefreshTokenDocument = gql`
+    mutation RefreshToken($token: String!) {
+  refreshToken(refresh_token: $token) {
+    status
+    token
+    refreshToken
+  }
+}
+    `;
+export type RefreshTokenMutationFn = Apollo.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
+
+/**
+ * __useRefreshTokenMutation__
+ *
+ * To run a mutation, you first call `useRefreshTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRefreshTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [refreshTokenMutation, { data, loading, error }] = useRefreshTokenMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export function useRefreshTokenMutation(baseOptions?: Apollo.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, options);
+      }
+export type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
+export type RefreshTokenMutationResult = Apollo.MutationResult<RefreshTokenMutation>;
+export type RefreshTokenMutationOptions = Apollo.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
 export const PingDocument = gql`
     query Ping {
   ping

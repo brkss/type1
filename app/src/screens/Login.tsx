@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 import { Button, Input } from "../components";
 import { useLoginMutation } from "../generated/graphql";
-import { AuthContext } from "../utils/auth/token";
+import { AuthContext, setToken } from "../utils/auth/token";
 import * as secureStore from "expo-secure-store";
 
 const { width } = Dimensions.get("window");
@@ -25,11 +25,13 @@ export const Login: React.FC<any> = ({ navigation }) => {
         ident: username,
         password: password,
       },
-    }).then((res) => {
+    }).then(async (res) => {
       if (res.data) {
         if (res.data!.login.status == true) {
           console.log("Token saved !");
-          secureStore.setItemAsync("TOKEN", res.data.login.token!);
+          setToken(res.data.login.token!);
+          await secureStore.setItemAsync("TOKEN", res.data.login.refreshToken!);
+          //token = res.data.login.token!;
           signIn(res.data.login.token!);
         }
       }

@@ -6,6 +6,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { HttpLink } from "@apollo/client";
 import { onError } from "apollo-link-error";
+import { AuthContext } from "./src/utils/auth/token";
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
