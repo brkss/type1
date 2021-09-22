@@ -3,5 +3,6 @@ mutation Login($ident: String!, $password: String!){
     status
     message
     token
+    refreshToken
   }
 }
