@@ -104,20 +104,7 @@ const client: any = new ApolloClient({
   ]),
   cache,
 });
-/*
-const errorLink = onError(({ graphQLErrors }) => {
-  if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
-});
 
-const httpLink = new HttpLink({
-  uri: "http://localhost:4000/graphql",
-}) as any;
-
-const client = new ApolloClient({
-  link: errorLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-*/
 export default function App() {
   StatusBar.setBarStyle("dark-content", true);
   return (
