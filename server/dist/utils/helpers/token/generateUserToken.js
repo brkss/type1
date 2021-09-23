@@ -10,7 +10,7 @@ const generateUserAccessToken = (user) => {
         uuid: user.id,
     };
     const token = jsonwebtoken_1.default.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: "15m",
+        expiresIn: "12h",
     });
     return token;
 };
@@ -21,7 +21,7 @@ const generateUserRefreshToken = (user) => {
         version: user.tokenVersion,
     };
     const token = jsonwebtoken_1.default.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
-        expiresIn: "7d",
+        expiresIn: "10d",
     });
     return token;
 };

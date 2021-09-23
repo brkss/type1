@@ -18,12 +18,14 @@ import bc from "bcrypt";
 import { ContextApollo } from "../utils/types/Context";
 import { sendUserRefreshToken } from "../utils/helpers/token/sendRefreshToken";
 import { isUserAuth } from "../utils/middlewares/auth.mw";
+import * as jwt from "jsonwebtoken";
 
 @Resolver()
 export class UserResolver {
+  @UseMiddleware(isUserAuth)
   @Query(() => String)
   ping() {
-    return "pong";
+    return "p000ong";
   }
 
   @Query(() => [User])
@@ -136,6 +138,7 @@ export class UserResolver {
         status: true,
         message: "User created successfuly !",
         token: generateUserAccessToken(_user!),
+        refreshToken: generateUserRefreshToken(_user!),
       };
     } catch (e) {
       console.log("error while creating user: ", e);
@@ -144,5 +147,58 @@ export class UserResolver {
         message: "Somethinf went wrong while creating user !",
       };
     }
+  }
+
+  @Mutation(() => DefaultAuthResponse)
+  async refreshToken(@Arg("refresh_token") token: string) {
+    if (!token) {
+      return {
+        status: false,
+      };
+    }
+
+    // parse token !
+    let payload: any;
+    try {
+      payload = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET!) as any;
+      console.log("token payload : ", payload);
+    } catch (e) {
+      console.log("prob invalid token ! e =>>> ", e);
+      return {
+        status: false,
+        token: "",
+      };
+    }
+    if (!payload) {
+      return {
+        status: false,
+        token: "invalid payload !",
+      };
+    }
+
+    // verify user !
+    const user = await User.findOne({ where: { id: payload!.uuid } });
+    if (!user) {
+      return {
+        status: false,
+        token: "invalid user!",
+      };
+    }
+
+    // check token version
+    if (user!.tokenVersion !== payload.version) {
+      return {
+        status: false,
+        token: "invalid version !",
+      };
+    }
+
+    // token is valid
+    const new_token = generateUserRefreshToken(user!);
+    return {
+      status: true,
+      token: generateUserAccessToken(user!),
+      refreshToken: new_token,
+    };
   }
 }

@@ -6,13 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.refreshToken = void 0;
 const User_1 = require("../../../entity/User");
 const generateUserToken_1 = require("./generateUserToken");
-const sendRefreshToken_1 = require("./sendRefreshToken");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const refreshToken = async (req, res) => {
     console.log("user cookie : ", req.cookies.uid);
-    const token = req.cookies.uid;
+    const token = req.headers.refresh_token;
     if (!token) {
-        res.send({
+        return res.send({
             status: false,
             token: "",
         });
@@ -25,33 +24,32 @@ const refreshToken = async (req, res) => {
     }
     catch (e) {
         console.log("prob invalid token ! e =>>> ", e);
-        res.send({
+        return res.send({
             status: false,
             token: "",
         });
     }
     if (!payload) {
-        res.send({
+        return res.send({
             status: false,
             token: "invalid payload !",
         });
     }
     const user = await User_1.User.findOne({ where: { id: payload.uuid } });
     if (!user) {
-        res.send({
+        return res.send({
             status: false,
             token: "invalid user!",
         });
     }
     if (user.tokenVersion !== payload.version) {
-        res.send({
+        return res.send({
             status: false,
             token: "invalid version !",
         });
     }
     const new_token = (0, generateUserToken_1.generateUserRefreshToken)(user);
-    (0, sendRefreshToken_1.sendUserRefreshToken)(res, new_token);
-    res.send({
+    return res.send({
         status: true,
         token: (0, generateUserToken_1.generateUserAccessToken)(user),
     });

@@ -10,9 +10,10 @@ import jwt from "jsonwebtoken";
 export const refreshToken = async (req: Request, res: Response) => {
   // get token from the cookie
   console.log("user cookie : ", req.cookies.uid);
-  const token = req.cookies.uid;
+  //const token = req.cookies.uid;
+  const token = req.headers.refresh_token as string;
   if (!token) {
-    res.send({
+    return res.send({
       status: false,
       token: "",
     });
@@ -26,13 +27,13 @@ export const refreshToken = async (req: Request, res: Response) => {
     console.log("token payload : ", payload);
   } catch (e) {
     console.log("prob invalid token ! e =>>> ", e);
-    res.send({
+    return res.send({
       status: false,
       token: "",
     });
   }
   if (!payload) {
-    res.send({
+    return res.send({
       status: false,
       token: "invalid payload !",
     });
@@ -41,7 +42,7 @@ export const refreshToken = async (req: Request, res: Response) => {
   // verify user !
   const user = await User.findOne({ where: { id: payload!.uuid } });
   if (!user) {
-    res.send({
+    return res.send({
       status: false,
       token: "invalid user!",
     });
@@ -49,7 +50,7 @@ export const refreshToken = async (req: Request, res: Response) => {
 
   // check token version
   if (user!.tokenVersion !== payload.version) {
-    res.send({
+    return res.send({
       status: false,
       token: "invalid version !",
     });
@@ -57,9 +58,10 @@ export const refreshToken = async (req: Request, res: Response) => {
 
   // token is valid
   const new_token = generateUserRefreshToken(user!);
-  sendUserRefreshToken(res, new_token);
-  res.send({
+  //  sendUserRefreshToken(res, new_token);
+  return res.send({
     status: true,
     token: generateUserAccessToken(user!),
+    //refreshToken: generateUserRefreshToken(user!),
   });
 };
