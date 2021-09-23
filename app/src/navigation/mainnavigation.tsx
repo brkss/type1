@@ -56,7 +56,10 @@ export const MainNavigation: React.FC = () => {
         if (userToken) {
           const res = await refrshToken({ variables: { token: userToken } });
           if (res.data!.refreshToken.status) {
-            console.log("just refreshed that token !");
+            console.log(
+              "just refreshed that token ! => ",
+              res.data!.refreshToken.refreshToken
+            );
             setToken(res.data!.refreshToken.token!);
             await secureStorage.setItemAsync(
               "TOKEN",

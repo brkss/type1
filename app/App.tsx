@@ -7,7 +7,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { HttpLink } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { ApolloLink, Observable } from "apollo-link";
-import { getToken } from "./src/utils/auth/token";
+import { getToken, setToken } from "./src/utils/auth/token";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
 import jwtDecode from "jwt-decode";
 import { DEFAULT_URL } from "./src/utils/config/constants";
@@ -62,21 +62,30 @@ const link: any = new TokenRefreshLink({
     }
   },
   fetchAccessToken: async () => {
-    const refresh_token = await secureStorage.getItemAsync("TOKEN");
-    return fetch(`http://localhost:4000/refresh_token`, {
+    const refreshtoken = await secureStorage.getItemAsync("TOKEN");
+    console.log("refresh token from storage => ", refreshtoken);
+    return await fetch("http://localhost:4000/refresh_token", {
       method: "POST",
-      body: JSON.stringify({
-        refresh: refresh_token,
-      }),
+      headers: {
+        refresh_token: refreshtoken!,
+      },
       //credentials: "include",
     });
   },
+  handleResponse: (_, __) => (response: { status: boolean; token: string }) => {
+    console.log("resp responseXX => ");
+    console.log("resp response => ", response);
+    return {
+      token: response.token,
+    };
+  },
   handleFetch: (accessToken) => {
+    setToken(accessToken);
     console.log("access token => ", accessToken);
   },
   handleError: (err) => {
     console.warn("Your refresh token is invalid. Try to relogin");
-    console.error(err);
+    console.warn(err);
   },
 });
 
