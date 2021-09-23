@@ -25,17 +25,24 @@ export const Login: React.FC<any> = ({ navigation }) => {
         ident: username,
         password: password,
       },
-    }).then(async (res) => {
-      if (res.data) {
-        if (res.data!.login.status == true) {
-          console.log("Token saved !");
-          setToken(res.data.login.token!);
-          await secureStore.setItemAsync("TOKEN", res.data.login.refreshToken!);
-          //token = res.data.login.token!;
-          signIn(res.data.login.token!);
+    })
+      .then(async (res) => {
+        if (res.data) {
+          if (res.data!.login.status == true) {
+            console.log("Token saved !");
+            setToken(res.data.login.token!);
+            await secureStore.setItemAsync(
+              "TOKEN",
+              res.data.login.refreshToken!
+            );
+            //token = res.data.login.token!;
+            signIn(res.data.login.token!);
+          }
         }
-      }
-    });
+      })
+      .catch((e) => {
+        console.log("login error => ", e);
+      });
   };
 
   return (

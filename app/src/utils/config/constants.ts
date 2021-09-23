@@ -1,1 +1,1 @@
-export const DEFAULT_URL: string = "http://localhost:4000";
+export const DEFAULT_URL: string = "http://192.168.1.106:4000";
