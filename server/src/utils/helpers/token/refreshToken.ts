@@ -4,7 +4,7 @@ import {
   generateUserRefreshToken,
   generateUserAccessToken,
 } from "./generateUserToken";
-import { sendUserRefreshToken } from "./sendRefreshToken";
+//import { sendUserRefreshToken } from "./sendRefreshToken";
 import jwt from "jsonwebtoken";
 
 export const refreshToken = async (req: Request, res: Response) => {
@@ -57,7 +57,7 @@ export const refreshToken = async (req: Request, res: Response) => {
   }
 
   // token is valid
-  const new_token = generateUserRefreshToken(user!);
+  //const new_token = generateUserRefreshToken(user!);
   //  sendUserRefreshToken(res, new_token);
   return res.send({
     status: true,

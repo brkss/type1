@@ -48,7 +48,6 @@ const refreshToken = async (req, res) => {
             token: "invalid version !",
         });
     }
-    const new_token = (0, generateUserToken_1.generateUserRefreshToken)(user);
     return res.send({
         status: true,
         token: (0, generateUserToken_1.generateUserAccessToken)(user),
