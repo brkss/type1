@@ -24,7 +24,7 @@ export const Home: React.FC<any> = ({ navigation }) => {
           <HistoryHome />
           <RecordsHistory />
           <CreateRecordHome />
-          <DemonsHome />
+          <DemonsHome clicked={() => navigation.navigate("demons")} />
         </View>
       </View>
     </ScrollView>

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 const activeDemons = [
@@ -14,9 +14,13 @@ const activeDemons = [
   },
 ];
 
-export const DemonsHome: React.FC = () => {
+interface Props {
+  clicked: () => void;
+}
+
+export const DemonsHome: React.FC<Props> = ({ clicked }) => {
   return (
-    <View style={style.container}>
+    <TouchableOpacity style={style.container} onPress={() => clicked()}>
       <Text style={style.title}>Demons are active.</Text>
       <Text style={style.subTitle}>
         View demons <AntDesign name="arrowright" size={18} color="black" />
@@ -28,7 +32,7 @@ export const DemonsHome: React.FC = () => {
           </View>
         ))}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
