@@ -90,7 +90,7 @@ export const MainNavigation: React.FC = () => {
   return (
     <AuthContext.Provider value={authContext}>
       {state.isLoading ? (
-        <Text>Loading !</Text>
+        <Text>Loading..</Text>
       ) : (
         <NavigationContainer>
           {state.userToken == null ? (

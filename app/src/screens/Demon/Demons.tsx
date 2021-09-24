@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { IDemon } from "../utils/types/IDemon";
-import { SingleDemon } from "../components/Demon";
+import { IDemon } from "../../utils/types/IDemon";
+import { SingleDemon } from "../../components/Demon";
 
 const demons: IDemon[] = [
   {
@@ -48,7 +48,10 @@ export const Demons: React.FC = () => {
         <View style={style.row}>
           {demons.map((demon, key) => (
             <View key={key} style={style.colmn}>
-              <SingleDemon demon={demon} />
+              <SingleDemon
+                active={(key <= 3 && key > 0) || key == 5}
+                demon={demon}
+              />
             </View>
           ))}
         </View>

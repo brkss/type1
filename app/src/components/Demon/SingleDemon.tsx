@@ -4,11 +4,17 @@ import { IDemon } from "../../utils/types/IDemon";
 
 interface Props {
   demon: IDemon;
+  active?: boolean;
 }
 
-export const SingleDemon: React.FC<Props> = ({ demon }) => {
+export const SingleDemon: React.FC<Props> = ({ demon, active }) => {
   return (
-    <View style={style.demonContainer}>
+    <View
+      style={[
+        style.demonContainer,
+        { backgroundColor: active ? "#b5d2b9" : "#dcdcdc" },
+      ]}
+    >
       <Text style={style.demonImage}>{demon.image}</Text>
       <Text style={style.demonTitle}>{demon.name}</Text>
     </View>
