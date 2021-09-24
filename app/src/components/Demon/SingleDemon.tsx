@@ -1,15 +1,17 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { IDemon } from "../../utils/types/IDemon";
 
 interface Props {
   demon: IDemon;
   active?: boolean;
+  clicked: (name: string) => void;
 }
 
-export const SingleDemon: React.FC<Props> = ({ demon, active }) => {
+export const SingleDemon: React.FC<Props> = ({ demon, active, clicked }) => {
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => clicked(demon.name)}
       style={[
         style.demonContainer,
         { backgroundColor: active ? "#b5d2b9" : "#dcdcdc" },
@@ -17,7 +19,7 @@ export const SingleDemon: React.FC<Props> = ({ demon, active }) => {
     >
       <Text style={style.demonImage}>{demon.image}</Text>
       <Text style={style.demonTitle}>{demon.name}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

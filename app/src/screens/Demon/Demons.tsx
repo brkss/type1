@@ -35,7 +35,7 @@ const demons: IDemon[] = [
   },
 ];
 
-export const Demons: React.FC = () => {
+export const Demons: React.FC<any> = ({ navigation }) => {
   return (
     <View style={style.container}>
       <View style={style.wrap}>
@@ -49,6 +49,9 @@ export const Demons: React.FC = () => {
           {demons.map((demon, key) => (
             <View key={key} style={style.colmn}>
               <SingleDemon
+                clicked={(name: string) =>
+                  navigation.navigate("config-demon", { name: name })
+                }
                 active={(key <= 3 && key > 0) || key == 5}
                 demon={demon}
               />
