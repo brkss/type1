@@ -1,7 +1,9 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import { IDemon } from "../utils/types/IDemon";
+import { SingleDemon } from "../components/Demon";
 
-const demons = [
+const demons: IDemon[] = [
   {
     name: "Sleep",
     image: "👹",
@@ -14,7 +16,6 @@ const demons = [
     name: "Thyroid",
     image: "👹",
   },
-
   {
     name: "Insulin",
     image: "👹",
@@ -24,9 +25,12 @@ const demons = [
     name: "Sport",
     image: "👹",
   },
-
   {
-    name: "Meddicin",
+    name: "Medicine",
+    image: "👹",
+  },
+  {
+    name: "Costum",
     image: "👹",
   },
 ];
@@ -36,13 +40,15 @@ export const Demons: React.FC = () => {
     <View style={style.container}>
       <View style={style.wrap}>
         <Text style={style.title}>Demons.</Text>
+        <Text style={style.subtitle}>Choose and configure your demons.</Text>
+        <Text style={style.description}>
+          Demons are here to make your life more easier, by reminding you to
+          take your medicine, sleep, mesure your blood glucose and more.
+        </Text>
         <View style={style.row}>
           {demons.map((demon, key) => (
             <View key={key} style={style.colmn}>
-              <View style={style.demonContainer}>
-                <Text style={style.demonImage}>{demon.image}</Text>
-                <Text style={style.demonTitle}>{demon.name}</Text>
-              </View>
+              <SingleDemon demon={demon} />
             </View>
           ))}
         </View>
@@ -66,24 +72,19 @@ const style = StyleSheet.create({
     //flex: 1,
     flexWrap: "wrap",
     flexDirection: "row",
+    marginTop: 15,
   },
   colmn: {
     width: "50%",
     padding: 5,
   },
-  //
-  demonContainer: {
-    padding: 7,
-    backgroundColor: "#dcdcdc",
-    width: "100%",
-    alignItems: "center",
-    borderRadius: 5,
-  },
-  demonTitle: {
-    fontSize: 20,
+  subtitle: {
+    fontSize: 17,
     fontWeight: "bold",
+    marginVertical: 5,
   },
-  demonImage: {
-    fontSize: 60,
+  description: {
+    fontSize: 13,
   },
+  //
 });
