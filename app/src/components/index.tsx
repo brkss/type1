@@ -7,3 +7,4 @@ export { DemonsHome } from "./Home/DemonsHome";
 export { HistoryHome } from "./Home/HistoryHome";
 export { CreateRecordHome } from "./Home/CreateRecordHome";
 export { FoodDemon, SingleDemon } from "./Demon";
+export { SingleRecord } from "./Record";

@@ -23,7 +23,7 @@ export const Home: React.FC<any> = ({ navigation }) => {
           </TouchableOpacity>
           <HistoryHome />
           <RecordsHistory />
-          <CreateRecordHome />
+          <CreateRecordHome onClick={() => navigation.navigate("record")} />
           <DemonsHome clicked={() => navigation.navigate("demons")} />
         </View>
       </View>

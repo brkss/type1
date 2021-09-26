@@ -2,9 +2,13 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-export const CreateRecordHome: React.FC = () => {
+interface Props {
+  onClick: () => void;
+}
+
+export const CreateRecordHome: React.FC<Props> = ({ onClick }) => {
   return (
-    <TouchableOpacity style={style.container}>
+    <TouchableOpacity style={style.container} onPress={() => onClick()}>
       <Text style={style.label}>
         <Feather name="plus" size={17} color="black" />
         Add Record

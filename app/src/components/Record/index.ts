@@ -1,0 +1,1 @@
+export { SingleRecord } from "./SingleRecord";
