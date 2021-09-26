@@ -27,6 +27,7 @@ const style = StyleSheet.create({
   },
   wrap: {
     padding: 10,
+    paddingHorizontal: 20,
   },
   demonInfo: {
     //alignItems: "center",
@@ -38,6 +39,7 @@ const style = StyleSheet.create({
   demonName: {
     fontSize: 35,
     fontWeight: "bold",
+    paddingTop: 20,
   },
   demonDescription: {
     marginTop: 5,
