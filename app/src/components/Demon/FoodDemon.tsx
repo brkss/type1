@@ -6,25 +6,27 @@ import { Button } from "../Button";
 export const FoodDemon: React.FC = () => {
   const [date, setDate] = React.useState(new Date());
   const [mode, setMode] = React.useState<"date" | "time" | undefined>("time");
-  const [currentMeal, SetCurrentMeal] = React.useState<string>("");
+  const [currentMeal, SetCurrentMeal] =
+    React.useState<"breakfast" | "lunch" | "snack" | "dinner">("dinner");
   const [show, SetShow] = React.useState<boolean>(false);
   const [mealsTime, SetMealsTime] = React.useState({
-    breakfast: `${new Date().getHours() || "00"}:${new Date().getMinutes()}`,
-    lunch: `${new Date().getHours() || "00"}:${new Date().getMinutes()}`,
-    snack: `${new Date().getHours() || "00"}:${new Date().getMinutes()}`,
-    dinner: `${new Date().getHours() || "00"}:${new Date().getMinutes()}`,
+    breakfast: new Date(),
+    lunch: new Date(),
+    snack: new Date(),
+    dinner: new Date(),
   });
 
   const handleShowingTimePicker = (meal: string) => {
     SetShow(true);
-    SetCurrentMeal(meal);
+
+    SetCurrentMeal(meal as any);
   };
 
   const handleMealTimeChange = (time: Date) => {
     if (!currentMeal) return;
     SetMealsTime({
       ...mealsTime,
-      [currentMeal]: `${time.getHours() || "00"}:${time.getMinutes()}`,
+      [currentMeal]: time,
     });
   };
 
@@ -40,37 +42,51 @@ export const FoodDemon: React.FC = () => {
           <TouchableOpacity
             onPress={() => handleShowingTimePicker("breakfast")}
           >
-            <Text style={style.mealTime}>{mealsTime.breakfast}</Text>
+            <Text style={style.mealTime}>
+              {" "}
+              {`${
+                mealsTime.breakfast.getHours() || "00"
+              }:${mealsTime.breakfast.getMinutes()}`}
+            </Text>
           </TouchableOpacity>
         </View>
 
         <View style={style.column}>
           <Text style={style.mealTitle}>Lunch</Text>
           <TouchableOpacity onPress={() => handleShowingTimePicker("lunch")}>
-            <Text style={style.mealTime}>{mealsTime.lunch}</Text>
+            <Text style={style.mealTime}>
+              {" "}
+              {`${
+                mealsTime.lunch.getHours() || "00"
+              }:${mealsTime.lunch.getMinutes()}`}
+            </Text>
           </TouchableOpacity>
         </View>
 
         <View style={style.column}>
           <Text style={style.mealTitle}>Snack</Text>
           <TouchableOpacity onPress={() => handleShowingTimePicker("snack")}>
-            <Text style={style.mealTime}>{mealsTime.snack}</Text>
+            <Text style={style.mealTime}>{`${
+              mealsTime.snack.getHours() || "00"
+            }:${mealsTime.snack.getMinutes()}`}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={style.column}>
           <Text style={style.mealTitle}>Dinner</Text>
           <TouchableOpacity onPress={() => handleShowingTimePicker("dinner")}>
-            <Text style={style.mealTime}>{mealsTime.dinner}</Text>
+            <Text style={style.mealTime}>{`${
+              mealsTime.dinner.getHours() || "00"
+            }:${mealsTime.dinner.getMinutes()}`}</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View>
-        {show ? (
+        {show && currentMeal ? (
           <>
             <DateTimePicker
               testID="dateTimePicker"
-              value={date}
+              value={mealsTime[currentMeal]}
               mode={mode}
               is24Hour={false}
               display="spinner"
