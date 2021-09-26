@@ -30,6 +30,22 @@ export const FoodDemon: React.FC = () => {
     });
   };
 
+  const formateTime = (time: Date): string => {
+    return `${
+      time.getHours() > 10
+        ? time.getHours()
+        : time.getHours() > 0
+        ? "0" + time.getHours()
+        : "00"
+    }:${
+      time.getMinutes() > 10
+        ? time.getMinutes()
+        : time.getMinutes() > 0
+        ? "0" + time.getMinutes()
+        : "00"
+    }`;
+  };
+
   const saveTime = () => {
     SetShow(false);
   };
@@ -44,9 +60,7 @@ export const FoodDemon: React.FC = () => {
           >
             <Text style={style.mealTime}>
               {" "}
-              {`${
-                mealsTime.breakfast.getHours() || "00"
-              }:${mealsTime.breakfast.getMinutes()}`}
+              {formateTime(mealsTime.breakfast)}
             </Text>
           </TouchableOpacity>
         </View>
@@ -54,30 +68,21 @@ export const FoodDemon: React.FC = () => {
         <View style={style.column}>
           <Text style={style.mealTitle}>Lunch</Text>
           <TouchableOpacity onPress={() => handleShowingTimePicker("lunch")}>
-            <Text style={style.mealTime}>
-              {" "}
-              {`${
-                mealsTime.lunch.getHours() || "00"
-              }:${mealsTime.lunch.getMinutes()}`}
-            </Text>
+            <Text style={style.mealTime}> {formateTime(mealsTime.lunch)}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={style.column}>
           <Text style={style.mealTitle}>Snack</Text>
           <TouchableOpacity onPress={() => handleShowingTimePicker("snack")}>
-            <Text style={style.mealTime}>{`${
-              mealsTime.snack.getHours() || "00"
-            }:${mealsTime.snack.getMinutes()}`}</Text>
+            <Text style={style.mealTime}>{formateTime(mealsTime.snack)}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={style.column}>
           <Text style={style.mealTitle}>Dinner</Text>
           <TouchableOpacity onPress={() => handleShowingTimePicker("dinner")}>
-            <Text style={style.mealTime}>{`${
-              mealsTime.dinner.getHours() || "00"
-            }:${mealsTime.dinner.getMinutes()}`}</Text>
+            <Text style={style.mealTime}>{formateTime(mealsTime.dinner)}</Text>
           </TouchableOpacity>
         </View>
       </View>

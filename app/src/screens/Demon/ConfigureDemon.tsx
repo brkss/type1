@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { FoodDemon } from "../../components";
 
 export const ConfigureDemon: React.FC<any> = ({ route }) => {
   return (
-    <View style={style.container}>
+    <ScrollView style={style.container}>
       <View style={style.wrap}>
         <View style={style.demonInfo}>
           <Text style={style.demonImage}>👹</Text>
@@ -17,13 +17,14 @@ export const ConfigureDemon: React.FC<any> = ({ route }) => {
           <FoodDemon />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const style = StyleSheet.create({
   container: {
     marginTop: 50,
+    marginBottom: 80,
   },
   wrap: {
     padding: 10,
