@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { FoodDemon } from "../../components";
 
 export const ConfigureDemon: React.FC<any> = ({ route }) => {
   return (
@@ -11,6 +12,9 @@ export const ConfigureDemon: React.FC<any> = ({ route }) => {
           <Text style={style.demonDescription}>
             This demon job is keep tracking your meals schedule.
           </Text>
+        </View>
+        <View>
+          <FoodDemon />
         </View>
       </View>
     </View>

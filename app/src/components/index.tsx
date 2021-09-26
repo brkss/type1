@@ -6,3 +6,4 @@ export { RecordsHistory } from "./Home/RecordsHistory";
 export { DemonsHome } from "./Home/DemonsHome";
 export { HistoryHome } from "./Home/HistoryHome";
 export { CreateRecordHome } from "./Home/CreateRecordHome";
+export { FoodDemon, SingleDemon } from "./Demon";
