@@ -4,13 +4,21 @@ import { Dimensions, StyleSheet, TouchableOpacity, Text } from "react-native";
 interface Props {
   title: string;
   onClick: () => void;
+  bg?: string;
+  color?: string;
 }
 const { width } = Dimensions.get("window");
 
-export const Button: React.FC<Props> = ({ title, onClick }) => {
+export const Button: React.FC<Props> = ({ title, onClick, bg, color }) => {
   return (
-    <TouchableOpacity style={style.container} onPress={() => onClick()}>
-      <Text style={style.title}> {title} </Text>
+    <TouchableOpacity
+      style={[style.container, { backgroundColor: bg ? bg : "#434343" }]}
+      onPress={() => onClick()}
+    >
+      <Text style={[style.title, { color: color ? color : "white" }]}>
+        {" "}
+        {title}{" "}
+      </Text>
     </TouchableOpacity>
   );
 };

@@ -81,6 +81,19 @@ export const FoodDemon: React.FC = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <View style={[style.row, style.actionContainer]}>
+        <View style={[style.column, style.actionButtomContainer]}>
+          <Button title={"Save"} onClick={() => {}} />
+        </View>
+        <View style={style.column}>
+          <Button
+            bg={"#CDF1D4"}
+            color={"black"}
+            title={"Active"}
+            onClick={() => {}}
+          />
+        </View>
+      </View>
       <View>
         {show && currentMeal ? (
           <>
@@ -120,5 +133,9 @@ const style = StyleSheet.create({
     fontSize: 27,
     fontWeight: "bold",
     opacity: 0.7,
+  },
+  actionContainer: {},
+  actionButtomContainer: {
+    paddingRight: 7,
   },
 });
