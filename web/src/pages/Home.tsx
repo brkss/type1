@@ -1,5 +1,5 @@
 import React from "react";
-import { Intro, Why, AppView } from "../components/Home";
+import { Intro, Why, AppView, About } from "../components/Home";
 
 export const Home: React.FC = () => {
   return (
@@ -7,6 +7,7 @@ export const Home: React.FC = () => {
       <Intro />
       <Why />
       <AppView />
+      <About />
     </>
   );
 };

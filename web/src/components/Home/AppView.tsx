@@ -25,7 +25,13 @@ export const AppView: React.FC = () => {
       >
         Open Source, <br /> Free For Personal Use <br /> and Self Host!{" "}
       </Heading>
-      <Text w={"100%"} pos={"absolute"} bottom={"20px"} textAlign={"center"}>
+      <Text
+        d={"none"}
+        w={"100%"}
+        pos={"absolute"}
+        bottom={"20px"}
+        textAlign={"center"}
+      >
         Open CC is a open-source app for chronic conditions managment under
         AGPLv3 license{" "}
       </Text>
