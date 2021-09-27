@@ -4,7 +4,7 @@ import ss from "../../assets/ss.png";
 
 export const AppView: React.FC = () => {
   return (
-    <Box bg={"#fceee7"} minH={"100vh"} pos={"relative"} marginTop={"65px"}>
+    <Box bg={"#fceee7"} minH={"80vh"} pos={"relative"} marginTop={"65px"}>
       <Image
         src={ss}
         w={"300px"}
@@ -25,9 +25,9 @@ export const AppView: React.FC = () => {
       >
         Open Source, <br /> Free For Personal Use <br /> and Self Host!{" "}
       </Heading>
-      <Text>
-        Open CC is a open-source app for chronic conditions managment, free to
-        use self{" "}
+      <Text w={"100%"} pos={"absolute"} bottom={"20px"} textAlign={"center"}>
+        Open CC is a open-source app for chronic conditions managment under
+        AGPLv3 license{" "}
       </Text>
     </Box>
   );
