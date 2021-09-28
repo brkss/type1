@@ -1,5 +1,6 @@
 import React from "react";
 import { Intro, Why, AppView, About } from "../components/Home";
+import { ABOUT_SECTIONS } from "../utils/data/about.data";
 
 export const Home: React.FC = () => {
   return (
@@ -7,7 +8,9 @@ export const Home: React.FC = () => {
       <Intro />
       <Why />
       <AppView />
-      <About />
+      {ABOUT_SECTIONS.map((section) => (
+        <About title={section.title} text={section.text} />
+      ))}
     </>
   );
 };
