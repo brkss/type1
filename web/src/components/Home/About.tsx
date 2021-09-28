@@ -25,11 +25,11 @@ export const About: React.FC<Props> = ({ text, title }) => {
       >
         <GridItem colSpan={{ md: 3, base: 6 }}>
           <Center height={"100%"}>
-            <Box textAlign={"left"} w={{ base: "100%", md: "80%" }}>
+            <Box textAlign={"left"} w={{ base: "100%", md: "100%" }}>
               <Heading>{title}</Heading>
 
               <Text
-                mt={{ base: "25px", md: "0px" }}
+                mt={{ base: "25px", md: "7px" }}
                 mb={{ base: "50px", md: 0 }}
               >
                 {text}
