@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Center, Heading } from "@chakra-ui/react";
-import { SurveyIntro } from "../components/Survey";
+import { SurveyIntro, Information } from "../components/Survey";
 
 export const Survey: React.FC = () => {
   const [current, SetCurrent] = React.useState<number>(1);
@@ -14,7 +14,7 @@ export const Survey: React.FC = () => {
         {
           {
             1: <SurveyIntro onFinish={() => finished()} />,
-            2: <Heading>Hello !</Heading>,
+            2: <Information />,
           }[current]
         }
       </Center>
