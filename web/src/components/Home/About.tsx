@@ -9,6 +9,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import ss from "../../assets/ss.png";
+import ssshadow from "../../assets/ss_shadow.png";
 
 interface Props {
   title: string;
@@ -40,7 +41,7 @@ export const About: React.FC<Props> = ({ text, title }) => {
 
         <GridItem colSpan={{ md: 3, base: 6 }}>
           <Center pos={"relative"}>
-            <Image w={{ md: "300px", base: "150px" }} src={ss} />
+            <Image w={{ md: "300px", base: "150px" }} src={ssshadow} />
           </Center>
         </GridItem>
       </Grid>

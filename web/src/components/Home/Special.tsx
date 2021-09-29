@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
-import ss from "../../assets/ss.png";
+import special from "../../assets/special.png";
 
 export const Special: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ export const Special: React.FC = () => {
           affect your condition like menses, stress, or an infection.
         </Text>
         <br />
-        <Image src={ss} w={"270px"} m={"auto"} />
+        <Image src={special} w={"100%"} m={"auto"} />
       </Box>
     </Box>
   );
