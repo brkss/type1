@@ -1,12 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, RouteProps } from "react-router-dom";
 import { routes } from "./utils/config/routes";
-import { Navigation } from "./components";
 
 export const Application: React.FC = () => {
   return (
     <BrowserRouter>
-      <Navigation />
       <Switch>
         {routes.map((route, key) => (
           <Route

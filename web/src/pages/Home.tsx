@@ -8,10 +8,12 @@ import {
   ContactUs,
 } from "../components/Home";
 import { ABOUT_SECTIONS } from "../utils/data/about.data";
+import { Navigation } from "../components";
 
 export const Home: React.FC = () => {
   return (
     <>
+      <Navigation />
       <Intro />
       <Why />
       <AppView />
