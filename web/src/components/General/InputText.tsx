@@ -24,6 +24,8 @@ export const InputText: React.FC<Props> = ({ label, placeholder, changed }) => {
 const Label = styled.label`
   font-size: 12px;
   opacity: 0.8;
+  margin-top: -2px;
+  display: block;
 `;
 
 const Input = styled.input`
