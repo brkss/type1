@@ -3,7 +3,7 @@ export interface IQuestion {
   answers: IAnswer[];
 }
 
-interface IAnswer {
+export interface IAnswer {
   text: string;
   description?: string;
 }

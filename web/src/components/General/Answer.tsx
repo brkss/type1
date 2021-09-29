@@ -8,6 +8,7 @@ interface Props {
   selected?: boolean;
   answer: string;
   description?: string;
+  choose: () => void;
 }
 
 export const Answer: React.FC<Props> = ({
@@ -16,17 +17,19 @@ export const Answer: React.FC<Props> = ({
   answer,
   selected,
   description,
+  choose,
 }) => {
   return (
     <Animated
-      animationIn="fadeInUp"
-      animationOut="fadeOutUp"
+      animationIn="fadeIn"
+      animationOut="fadeOut"
       animationInDuration={1000}
       animationOutDuration={1000}
       isVisible={visible}
       animationInDelay={delay || 0}
     >
       <Box
+        onClick={() => choose()}
         cursor={"pointer"}
         p={"10px"}
         mt={"15px"}
@@ -34,6 +37,7 @@ export const Answer: React.FC<Props> = ({
         rounded={5}
         fontSize={"13px"}
         fontWeight="bold"
+        borderColor={selected ? "black" : "#0000001a"}
       >
         <Text>{answer}</Text>
         {description ? (
