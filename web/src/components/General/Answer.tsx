@@ -27,6 +27,7 @@ export const Answer: React.FC<Props> = ({
       animationInDelay={delay || 0}
     >
       <Box
+        cursor={"pointer"}
         p={"10px"}
         mt={"15px"}
         border={"1px solid #0000001a"}

@@ -1,6 +1,6 @@
-import { Question } from "../types/Question";
+import { IQuestion } from "../types/Question";
 
-export const questions: Question[] = [
+export const questions: IQuestion[] = [
   {
     text: "Do you hove any of the following conditions ?",
     answers: [

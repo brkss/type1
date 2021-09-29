@@ -1,9 +1,9 @@
-export interface Question {
+export interface IQuestion {
   text: string;
-  answers: Answer[];
+  answers: IAnswer[];
 }
 
-interface Answer {
+interface IAnswer {
   text: string;
   description?: string;
 }
