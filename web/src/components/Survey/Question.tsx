@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
 import { Animated } from "react-animated-css";
+import { Answer } from "../General";
 
 interface Props {}
 
@@ -18,6 +19,13 @@ export const Question: React.FC = () => {
         <Heading fontSize={"20px"}>
           Do you have any of the following conditions ?
         </Heading>
+        <Box>
+          <Answer
+            answer={"Type 1 Diabetes"}
+            description={"Generally this focus much more on type 1 diabetes"}
+            visible={true}
+          />
+        </Box>
       </Animated>
     </Box>
   );
