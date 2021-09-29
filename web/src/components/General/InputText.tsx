@@ -1,23 +1,41 @@
 import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import { Animated } from "react-animated-css";
 
 interface Props {
   label: string;
   placeholder?: string;
   changed: (value: string) => void;
+  delay?: number;
+  visible: boolean;
 }
 
-export const InputText: React.FC<Props> = ({ label, placeholder, changed }) => {
+export const InputText: React.FC<Props> = ({
+  label,
+  placeholder,
+  changed,
+  delay,
+  visible,
+}) => {
   return (
-    <Box>
-      <Input
-        type={"text"}
-        placeholder={placeholder || ""}
-        onChange={(e) => changed(e.currentTarget.value)}
-      />
-      <Label>{label}</Label>
-    </Box>
+    <Animated
+      animationIn="fadeInUp"
+      animationOut="fadeOutUp"
+      animationInDuration={1000}
+      animationOutDuration={1000}
+      isVisible={visible}
+      animationInDelay={delay || 0}
+    >
+      <Box>
+        <Input
+          type={"text"}
+          placeholder={placeholder || ""}
+          onChange={(e) => changed(e.currentTarget.value)}
+        />
+        <Label>{label}</Label>
+      </Box>
+    </Animated>
   );
 };
 
