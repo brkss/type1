@@ -3,10 +3,15 @@ import { Box, Heading } from "@chakra-ui/react";
 import { InputText, ButtonNav } from "../General";
 import { Animated } from "react-animated-css";
 
-export const Information: React.FC = () => {
+interface Props {
+  onFinish: () => void;
+}
+
+export const Information: React.FC<Props> = ({ onFinish }) => {
   const [visible, SetVisible] = React.useState(true);
   const next = () => {
     SetVisible(false);
+    setTimeout(() => onFinish(), 1000);
   };
 
   return (
