@@ -2,14 +2,27 @@ import React from "react";
 import { Box, Center, Heading } from "@chakra-ui/react";
 import { SurveyIntro, Information, Question } from "../components/Survey";
 import { questions } from "../utils/data/questions.data";
+import { IQuestion, IAnswer } from "../utils/types/Question";
 
 export const Survey: React.FC = () => {
   const [current, SetCurrent] = React.useState<number>(1);
   const [currentQuestion, SetCurrentQuestion] = React.useState<number>(0);
+  const [qaa, SetQaa] = React.useState<IQuestion[]>([]);
 
-  const nextQuestion = () => {
-    if (currentQuestion < questions.length) {
+  const nextQuestion = (answers: IAnswer[]) => {
+    if (currentQuestion < questions.length - 1) {
+      SetQaa([
+        ...qaa,
+        { text: questions[currentQuestion].text, answers: answers },
+      ]);
       SetCurrentQuestion(currentQuestion + 1);
+    } else {
+      SetQaa([
+        ...qaa,
+        { text: questions[currentQuestion].text, answers: answers },
+      ]);
+
+      console.log("answers : ", qaa);
     }
   };
 
@@ -27,7 +40,7 @@ export const Survey: React.FC = () => {
             3: (
               <Question
                 question={questions[currentQuestion]}
-                next={() => nextQuestion()}
+                next={(answers: IAnswer[]) => nextQuestion(answers)}
               />
             ),
           }[current]

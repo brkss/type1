@@ -6,7 +6,7 @@ import { IQuestion, IAnswer } from "../../utils/types/Question";
 
 interface Props {
   question: IQuestion;
-  next: () => void;
+  next: (answers: IAnswer[]) => void;
 }
 
 export const Question: React.FC<Props> = ({ question, next }) => {
@@ -50,7 +50,7 @@ export const Question: React.FC<Props> = ({ question, next }) => {
             />
           ))}
         </Box>
-        <ButtonNav visible={true} text={"Next"} clicked={() => next()} />
+        <ButtonNav visible={true} text={"Next"} clicked={() => next(answers)} />
       </Animated>
     </Box>
   );
