@@ -4,7 +4,7 @@ import special from "../../assets/special.png";
 
 export const Special: React.FC = () => {
   return (
-    <Box minH={"100vh"} background={"black"} color={"white"} p={15}>
+    <Box background={"black"} color={"white"} p={15} pb={0}>
       <Box w={{ md: "70%", base: "100%" }} m={"auto"} mt={20}>
         <Heading>Notifications And Alerts</Heading>
         <Text>

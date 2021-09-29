@@ -1,5 +1,12 @@
 import React from "react";
-import { Intro, Why, AppView, About, Special } from "../components/Home";
+import {
+  Intro,
+  Why,
+  AppView,
+  About,
+  Special,
+  ContactUs,
+} from "../components/Home";
 import { ABOUT_SECTIONS } from "../utils/data/about.data";
 
 export const Home: React.FC = () => {
@@ -12,6 +19,7 @@ export const Home: React.FC = () => {
         <About title={section.title} text={section.text} />
       ))}
       <Special />
+      <ContactUs />
     </>
   );
 };
