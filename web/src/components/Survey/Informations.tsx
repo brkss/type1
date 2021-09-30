@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, useToast } from "@chakra-ui/react";
 import { InputText, ButtonNav } from "../General";
 import { Animated } from "react-animated-css";
 import { useCreateAbandonedRecordMutation } from "../../generated/graphql";
@@ -12,6 +12,7 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
   const [visible, SetVisible] = React.useState(true);
   const [abandoned] = useCreateAbandonedRecordMutation();
   const [form, SetForm] = React.useState<any>();
+  const toast = useToast();
 
   const handleForm = (id: string, value: string) => {
     SetForm({
@@ -21,9 +22,38 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
   };
 
   const next = () => {
-    console.log("form : ", form);
-    //SetVisible(false);
-    //setTimeout(() => onFinish(), 1000);
+    if (!form || !form.name || !form.email) {
+      toast({
+        title: "Please fill in all the required fields!",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+    abandoned({ variables: { name: form.name, email: form.email } }).then(
+      (res) => {
+        if (res.errors || !res.data) {
+          toast({
+            title: "Something went wrong !",
+            status: "warning",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+        if (res.data!.createAbandoned.status) {
+          SetVisible(false);
+          setTimeout(() => onFinish(), 1000);
+        } else {
+          toast({
+            title: "Something went wrong !",
+            status: "warning",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+      }
+    );
   };
 
   return (
