@@ -5,6 +5,7 @@ import {
   Information,
   Question,
   ThankYou,
+  Finish,
 } from "../components/Survey";
 import { questions } from "../utils/data/questions.data";
 import { IQuestion, IAnswer } from "../utils/types/Question";
@@ -21,17 +22,13 @@ export const Survey: React.FC = () => {
   const toast = useToast();
   const [request] = useCreateRequestRecordMutation();
   const nextQuestion = (answers: IAnswer[]) => {
+    SetQaa((prevQaa) => [
+      ...prevQaa,
+      { text: questions[currentQuestion].text, answers: answers },
+    ]);
     if (currentQuestion < questions.length - 1) {
-      SetQaa([
-        ...qaa,
-        { text: questions[currentQuestion].text, answers: answers },
-      ]);
       SetCurrentQuestion(currentQuestion + 1);
     } else {
-      SetQaa([
-        ...qaa,
-        { text: questions[currentQuestion].text, answers: answers },
-      ]);
       if (!baseInfo.name || !baseInfo.email) {
         toast({
           title: "Missing Information :(",
@@ -40,12 +37,14 @@ export const Survey: React.FC = () => {
           duration: 3000,
         });
       }
-
-      saveSurveyData();
+      console.log("qaa => ", qaa);
+      finished();
+      //saveSurveyData();
     }
   };
 
   const saveSurveyData = () => {
+    console.log("qaa => ", qaa);
     const _data = {
       name: baseInfo.name,
       email: baseInfo.email,
@@ -70,7 +69,7 @@ export const Survey: React.FC = () => {
         finished();
       } else {
         toast({
-          title: res.data.createRequest.message!,
+          title: res.data.createRequest.message! + "Exp",
           status: "warning",
           isClosable: true,
           duration: 3000,
@@ -110,7 +109,8 @@ export const Survey: React.FC = () => {
                 next={(answers: IAnswer[]) => nextQuestion(answers)}
               />
             ),
-            4: <ThankYou />,
+            4: <Finish finished={() => saveSurveyData()} />,
+            5: <ThankYou />,
           }[current]
         }
       </Center>
