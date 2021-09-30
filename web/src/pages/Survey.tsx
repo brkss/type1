@@ -8,6 +8,7 @@ import {
 } from "../components/Survey";
 import { questions } from "../utils/data/questions.data";
 import { IQuestion, IAnswer } from "../utils/types/Question";
+import { useCreateRequestRecordMutation } from "../generated/graphql";
 
 export const Survey: React.FC = () => {
   const [current, SetCurrent] = React.useState<number>(1);
@@ -18,7 +19,7 @@ export const Survey: React.FC = () => {
     email: string;
   }>({ name: "", email: "" });
   const toast = useToast();
-
+  const [request] = useCreateRequestRecordMutation();
   const nextQuestion = (answers: IAnswer[]) => {
     if (currentQuestion < questions.length - 1) {
       SetQaa([
@@ -48,11 +49,34 @@ export const Survey: React.FC = () => {
     const _data = {
       name: baseInfo.name,
       email: baseInfo.email,
-      questions: [...qaa],
+      questions: qaa.map((q) => ({
+        text: q.text,
+        answers: q.answers.map((a) => ({
+          text: a.text,
+        })),
+      })),
     };
-    finished();
-    console.log("final data : ", _data);
-    console.log("final qaa : ", qaa);
+    request({ variables: _data }).then((res) => {
+      if (res.errors || !res.data) {
+        toast({
+          title: "Something went wrong",
+          duration: 3000,
+          isClosable: true,
+          status: "warning",
+        });
+        return;
+      }
+      if (res.data.createRequest.status) {
+        finished();
+      } else {
+        toast({
+          title: res.data.createRequest.message!,
+          status: "warning",
+          isClosable: true,
+          duration: 3000,
+        });
+      }
+    });
   };
 
   const saveBaseInformation = (name: string, email: string) => {
