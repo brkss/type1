@@ -154,6 +154,15 @@ export type CreateAbandonedRecordMutationVariables = Exact<{
 
 export type CreateAbandonedRecordMutation = { __typename?: 'Mutation', createAbandoned: { __typename?: 'DefaultInviteResponse', status: boolean, message?: string | null | undefined } };
 
+export type CreateRequestRecordMutationVariables = Exact<{
+  name: Scalars['String'];
+  email: Scalars['String'];
+  questions: Array<InQuestion> | InQuestion;
+}>;
+
+
+export type CreateRequestRecordMutation = { __typename?: 'Mutation', createRequest: { __typename?: 'DefaultInviteResponse', status: boolean, message?: string | null | undefined } };
+
 
 export const CreateAbandonedRecordDocument = gql`
     mutation CreateAbandonedRecord($name: String!, $email: String!) {
@@ -190,3 +199,39 @@ export function useCreateAbandonedRecordMutation(baseOptions?: Apollo.MutationHo
 export type CreateAbandonedRecordMutationHookResult = ReturnType<typeof useCreateAbandonedRecordMutation>;
 export type CreateAbandonedRecordMutationResult = Apollo.MutationResult<CreateAbandonedRecordMutation>;
 export type CreateAbandonedRecordMutationOptions = Apollo.BaseMutationOptions<CreateAbandonedRecordMutation, CreateAbandonedRecordMutationVariables>;
+export const CreateRequestRecordDocument = gql`
+    mutation CreateRequestRecord($name: String!, $email: String!, $questions: [InQuestion!]!) {
+  createRequest(data: {name: $name, email: $email, questions: $questions}) {
+    status
+    message
+  }
+}
+    `;
+export type CreateRequestRecordMutationFn = Apollo.MutationFunction<CreateRequestRecordMutation, CreateRequestRecordMutationVariables>;
+
+/**
+ * __useCreateRequestRecordMutation__
+ *
+ * To run a mutation, you first call `useCreateRequestRecordMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateRequestRecordMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createRequestRecordMutation, { data, loading, error }] = useCreateRequestRecordMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      email: // value for 'email'
+ *      questions: // value for 'questions'
+ *   },
+ * });
+ */
+export function useCreateRequestRecordMutation(baseOptions?: Apollo.MutationHookOptions<CreateRequestRecordMutation, CreateRequestRecordMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateRequestRecordMutation, CreateRequestRecordMutationVariables>(CreateRequestRecordDocument, options);
+      }
+export type CreateRequestRecordMutationHookResult = ReturnType<typeof useCreateRequestRecordMutation>;
+export type CreateRequestRecordMutationResult = Apollo.MutationResult<CreateRequestRecordMutation>;
+export type CreateRequestRecordMutationOptions = Apollo.BaseMutationOptions<CreateRequestRecordMutation, CreateRequestRecordMutationVariables>;

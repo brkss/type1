@@ -1,0 +1,17 @@
+
+type InQuestion {
+  text: String,
+  answers: [InAnswer]
+}
+
+type InAnswer {
+  text: String
+}
+
+mutation CreateRequestRecord($name: String!, $email: String!, $questions: [InQuestion!]!){
+  createRequest(data: {name: $name, email: $email, questions: $questions}){
+    status
+    message
+  }
+  
+}
