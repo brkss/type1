@@ -1,0 +1,6 @@
+mutation CreateAbandonedRecord($name: String!, $email: String!){ 
+  createAbandoned(data: {name: $name, email: $email}){
+    status
+    message
+  }
+}

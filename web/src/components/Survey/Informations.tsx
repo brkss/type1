@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
 import { InputText, ButtonNav } from "../General";
 import { Animated } from "react-animated-css";
+import { useCreateAbandonedRecordMutation } from "../../generated/graphql";
 
 interface Props {
   onFinish: () => void;
@@ -9,9 +10,20 @@ interface Props {
 
 export const Information: React.FC<Props> = ({ onFinish }) => {
   const [visible, SetVisible] = React.useState(true);
+  const [abandoned] = useCreateAbandonedRecordMutation();
+  const [form, SetForm] = React.useState<any>();
+
+  const handleForm = (id: string, value: string) => {
+    SetForm({
+      ...form,
+      [id]: value,
+    });
+  };
+
   const next = () => {
-    SetVisible(false);
-    setTimeout(() => onFinish(), 1000);
+    console.log("form : ", form);
+    //SetVisible(false);
+    //setTimeout(() => onFinish(), 1000);
   };
 
   return (
@@ -28,13 +40,13 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
       <InputText
         label={"Full Name"}
         placeholder={"Full Name"}
-        changed={() => {}}
+        changed={(value: string) => handleForm("name", value)}
         visible={visible}
       />
       <InputText
         label={"Email  required so we can send you the invatation !"}
         placeholder={"Email"}
-        changed={() => {}}
+        changed={(value: string) => handleForm("email", value)}
         visible={visible}
       />
       <ButtonNav text={"Next"} visible={visible} clicked={() => next()} />
