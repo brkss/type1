@@ -19,6 +19,7 @@ const create_input_1 = require("../utils/inputs/Invite/create.input");
 const Request_1 = require("../entity/Invite/Request");
 const Question_1 = require("../entity/Invite/Question");
 const Answer_1 = require("../entity/Invite/Answer");
+const Abandoned_1 = require("../entity/Invite/Abandoned");
 let InviteResolver = class InviteResolver {
     invite() {
         return "nope yet!";
@@ -27,6 +28,30 @@ let InviteResolver = class InviteResolver {
         return await Request_1.Request.find({
             relations: ["questions", "questions.answers"],
         });
+    }
+    async createAbandoned(data) {
+        if (!data.name || !data.email) {
+            return {
+                status: false,
+                message: "Invalid Data !",
+            };
+        }
+        try {
+            const _abandoned = new Abandoned_1.Abandoned();
+            _abandoned.name = data.name;
+            _abandoned.email = data.email;
+            await _abandoned.save();
+            return {
+                status: true,
+            };
+        }
+        catch (e) {
+            console.log("something went wrong in [abandoned] ", e);
+            return {
+                status: false,
+                message: "Something went wrong !",
+            };
+        }
     }
     async createRequest(data) {
         if (!data.name || !data.email || data.questions.length == 0) {
@@ -79,6 +104,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], InviteResolver.prototype, "requests", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => default_response_1.DefaultInviteResponse),
+    __param(0, (0, type_graphql_1.Arg)("data")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_input_1.CreateAbandonedInput]),
+    __metadata("design:returntype", Promise)
+], InviteResolver.prototype, "createAbandoned", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => default_response_1.DefaultInviteResponse),
     __param(0, (0, type_graphql_1.Arg)("data")),

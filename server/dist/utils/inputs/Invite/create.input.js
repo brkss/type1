@@ -9,8 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateRequestInput = void 0;
+exports.CreateRequestInput = exports.CreateAbandonedInput = void 0;
 const type_graphql_1 = require("type-graphql");
+let CreateAbandonedInput = class CreateAbandonedInput {
+};
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], CreateAbandonedInput.prototype, "name", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], CreateAbandonedInput.prototype, "email", void 0);
+CreateAbandonedInput = __decorate([
+    (0, type_graphql_1.InputType)()
+], CreateAbandonedInput);
+exports.CreateAbandonedInput = CreateAbandonedInput;
 let CreateRequestInput = class CreateRequestInput {
 };
 __decorate([

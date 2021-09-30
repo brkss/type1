@@ -1,6 +1,15 @@
 import { InputType, Field } from "type-graphql";
 
 @InputType()
+export class CreateAbandonedInput {
+  @Field()
+  name: string;
+
+  @Field()
+  email: string;
+}
+
+@InputType()
 export class CreateRequestInput {
   @Field()
   name: string;

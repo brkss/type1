@@ -1,9 +1,13 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { DefaultInviteResponse } from "../utils/responses/Invite/default.response";
-import { CreateRequestInput } from "../utils/inputs/Invite/create.input";
+import {
+  CreateAbandonedInput,
+  CreateRequestInput,
+} from "../utils/inputs/Invite/create.input";
 import { Request } from "../entity/Invite/Request";
 import { Question } from "../entity/Invite/Question";
 import { Answer } from "../entity/Invite/Answer";
+import { Abandoned } from "../entity/Invite/Abandoned";
 
 @Resolver()
 export class InviteResolver {
@@ -17,6 +21,33 @@ export class InviteResolver {
     return await Request.find({
       relations: ["questions", "questions.answers"],
     });
+  }
+
+  @Mutation(() => DefaultInviteResponse)
+  async createAbandoned(
+    @Arg("data") data: CreateAbandonedInput
+  ): Promise<DefaultInviteResponse> {
+    if (!data.name || !data.email) {
+      return {
+        status: false,
+        message: "Invalid Data !",
+      };
+    }
+    try {
+      const _abandoned = new Abandoned();
+      _abandoned.name = data.name;
+      _abandoned.email = data.email;
+      await _abandoned.save();
+      return {
+        status: true,
+      };
+    } catch (e) {
+      console.log("something went wrong in [abandoned] ", e);
+      return {
+        status: false,
+        message: "Something went wrong !",
+      };
+    }
   }
 
   @Mutation(() => DefaultInviteResponse)
