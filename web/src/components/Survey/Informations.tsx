@@ -5,7 +5,7 @@ import { Animated } from "react-animated-css";
 import { useCreateAbandonedRecordMutation } from "../../generated/graphql";
 
 interface Props {
-  onFinish: () => void;
+  onFinish: (name: string, email: string) => void;
 }
 
 export const Information: React.FC<Props> = ({ onFinish }) => {
@@ -43,7 +43,7 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
         }
         if (res.data!.createAbandoned.status) {
           SetVisible(false);
-          setTimeout(() => onFinish(), 1000);
+          setTimeout(() => onFinish(form.name, form.email), 1000);
         } else {
           toast({
             title: "Something went wrong !",

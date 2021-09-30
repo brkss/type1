@@ -38,6 +38,7 @@ export const Answer: React.FC<Props> = ({
         fontSize={"13px"}
         fontWeight="bold"
         borderColor={selected ? "black" : "#0000001a"}
+        bg={selected ? "#f9f6f6" : "transparent"}
       >
         <Text>{answer}</Text>
         {description ? (
