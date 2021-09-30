@@ -1,4 +1,5 @@
-import { Query, Resolver } from "type-graphql";
+import { Mutation, Query, Resolver } from "type-graphql";
+import { DefaultInviteResponse } from "../utils/responses/Invite/default.response";
 
 @Resolver()
 export class InviteResolver {
@@ -6,4 +7,7 @@ export class InviteResolver {
   invite() {
     return "nope yet!";
   }
+
+  @Mutation(() => DefaultInviteResponse)
+  async createRequest();
 }
