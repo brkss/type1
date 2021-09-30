@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Question = exports.CreateRequestInput = void 0;
+exports.CreateRequestInput = void 0;
 const type_graphql_1 = require("type-graphql");
 let CreateRequestInput = class CreateRequestInput {
 };
@@ -22,34 +22,33 @@ __decorate([
     __metadata("design:type", String)
 ], CreateRequestInput.prototype, "email", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => [Question]),
+    (0, type_graphql_1.Field)(() => [InQuestion]),
     __metadata("design:type", Array)
 ], CreateRequestInput.prototype, "questions", void 0);
 CreateRequestInput = __decorate([
     (0, type_graphql_1.InputType)()
 ], CreateRequestInput);
 exports.CreateRequestInput = CreateRequestInput;
-let Question = class Question {
+let InQuestion = class InQuestion {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], Question.prototype, "text", void 0);
+], InQuestion.prototype, "text", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)(() => [InAnswer]),
     __metadata("design:type", Array)
-], Question.prototype, "answers", void 0);
-Question = __decorate([
+], InQuestion.prototype, "answers", void 0);
+InQuestion = __decorate([
     (0, type_graphql_1.InputType)()
-], Question);
-exports.Question = Question;
-let Answer = class Answer {
+], InQuestion);
+let InAnswer = class InAnswer {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], Answer.prototype, "text", void 0);
-Answer = __decorate([
+], InAnswer.prototype, "text", void 0);
+InAnswer = __decorate([
     (0, type_graphql_1.InputType)()
-], Answer);
+], InAnswer);
 //# sourceMappingURL=create.input.js.map

@@ -1,4 +1,5 @@
 import { InputType, Field } from "type-graphql";
+
 @InputType()
 export class CreateRequestInput {
   @Field()
@@ -7,21 +8,21 @@ export class CreateRequestInput {
   @Field()
   email: string;
 
-  @Field(() => [Question])
-  questions: Question[];
+  @Field(() => [InQuestion])
+  questions: InQuestion[];
 }
 
 @InputType()
-export class Question {
+class InQuestion {
   @Field()
   text: string;
 
-  @Field()
-  answers: Answer[];
+  @Field(() => [InAnswer])
+  answers: InAnswer[];
 }
 
 @InputType()
-class Answer {
+class InAnswer {
   @Field()
   text: string;
 }
