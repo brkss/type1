@@ -5,6 +5,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./resolvers/user.resolver";
+import { InviteResolver } from "./resolvers/invite.resolver";
 import { refreshToken } from "./utils/helpers/token/refreshToken";
 import cookieParser from "cookie-parser";
 
@@ -15,7 +16,7 @@ import cookieParser from "cookie-parser";
   app.get("/", (_, res) => res.send("hello"));
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [UserResolver, InviteResolver],
       validate: true,
     }),
     context: ({ req, res }) => ({ req, res }),
