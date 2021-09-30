@@ -1,14 +1,26 @@
 import React from "react";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Center, Heading, Text, Link } from "@chakra-ui/react";
 
 export const ThankYou: React.FC = () => {
   return (
-    <Box>
-      <Heading>Thank you!</Heading>
-      <Text>
-        You are on the list! You'll recieve an invitation link with your account
-        credentials when you're selected!
-      </Text>
+    <Box minH={"50vh"}>
+      <Center minH={"50vh"}>
+        <Box h={"100%"} textAlign={"center"}>
+          <Heading mb={3}>Thank You !</Heading>
+          <Text mb={3}>
+            You're in the list, you'll recieve email with you account credential
+            as soon as you're in.
+          </Text>
+          <Link
+            href={"#"}
+            fontSize={"18px"}
+            color={"#0066cc"}
+            fontWeight={"bold"}
+          >
+            OpenCC on Twitter
+          </Link>
+        </Box>
+      </Center>
     </Box>
   );
 };

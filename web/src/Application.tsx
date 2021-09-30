@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, RouteProps } from "react-router-dom";
 import { routes } from "./utils/config/routes";
+import { Text } from "@chakra-ui/react";
 
 export const Application: React.FC = () => {
   return (
@@ -17,6 +18,15 @@ export const Application: React.FC = () => {
           />
         ))}
       </Switch>
+      <Text
+        pos={"absolute"}
+        bottom={"5px"}
+        w={"100%"}
+        textAlign={"center"}
+        opacity={".8"}
+      >
+        created by @brahimberkasse
+      </Text>
     </BrowserRouter>
   );
 };

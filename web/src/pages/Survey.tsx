@@ -1,6 +1,11 @@
 import React from "react";
 import { Box, Center, Heading } from "@chakra-ui/react";
-import { SurveyIntro, Information, Question } from "../components/Survey";
+import {
+  SurveyIntro,
+  Information,
+  Question,
+  ThankYou,
+} from "../components/Survey";
 import { questions } from "../utils/data/questions.data";
 import { IQuestion, IAnswer } from "../utils/types/Question";
 
@@ -21,7 +26,7 @@ export const Survey: React.FC = () => {
         ...qaa,
         { text: questions[currentQuestion].text, answers: answers },
       ]);
-
+      finished();
       console.log("answers : ", qaa);
     }
   };
@@ -43,6 +48,7 @@ export const Survey: React.FC = () => {
                 next={(answers: IAnswer[]) => nextQuestion(answers)}
               />
             ),
+            4: <ThankYou />,
           }[current]
         }
       </Center>
