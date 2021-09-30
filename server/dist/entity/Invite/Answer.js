@@ -12,25 +12,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Answer = void 0;
 const typeorm_1 = require("typeorm");
 const Question_1 = require("./Question");
+const type_graphql_1 = require("type-graphql");
 let Answer = class Answer extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Answer.prototype, "id", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Answer.prototype, "text", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], Answer.prototype, "created_at", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(() => Question_1.Question),
     (0, typeorm_1.ManyToOne)(() => Question_1.Question, (question) => question.answers),
-    __metadata("design:type", Array)
+    __metadata("design:type", Question_1.Question)
 ], Answer.prototype, "question", void 0);
 Answer = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)("answers")
 ], Answer);
 exports.Answer = Answer;
