@@ -2,6 +2,7 @@ import React from "react";
 import { Heading, Box } from "@chakra-ui/react";
 import { gsap } from "gsap";
 import styled from "@emotion/styled";
+import { Animated } from "react-animated-css";
 
 interface Props {
   onFinish: () => void;
@@ -10,7 +11,7 @@ interface Props {
 export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
   const headingRef = React.useRef();
   const buttonRef = React.useRef();
-  const [showButtom, SetShowButton] = React.useState<boolean>(true);
+  const [showButton, SetShowButton] = React.useState<boolean>(true);
   React.useEffect(() => {
     gsap.to(buttonRef.current as any, { opacity: 1, duration: 2, delay: 1 });
     gsap.to(headingRef.current as any, { opacity: 1, y: "-=20", duration: 2 });
@@ -18,8 +19,10 @@ export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
   const start = () => {
     SetShowButton(false);
     gsap.to(headingRef.current as any, {
-      scale: "200",
-      duration: 2.3,
+      //scale: ".9",
+      y: 4,
+      opacity: 0,
+      duration: 0.3,
       onComplete: () => {
         console.log("log");
         onFinish();
@@ -32,11 +35,17 @@ export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
       <Heading opacity={0} y={40} fontSize={"50px"} ref={headingRef as any}>
         Survey
       </Heading>
-      {showButtom ? (
+      <Animated
+        animationIn="fadeIn"
+        animationOut="fadeOut"
+        animationInDuration={1000}
+        animationOutDuration={1000}
+        isVisible={showButton}
+      >
         <Button ref={buttonRef as any} onClick={() => start()}>
           Start
         </Button>
-      ) : null}
+      </Animated>
     </Box>
   );
 };
