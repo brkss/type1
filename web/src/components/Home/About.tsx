@@ -19,32 +19,34 @@ interface Props {
 export const About: React.FC<Props> = ({ text, title }) => {
   return (
     <Box background={"#fff"} minH={"100vh"} p={5}>
-      <Grid
-        w={{ base: "100%", md: "70%" }}
-        m={"auto"}
-        templateColumns="repeat(6, 1fr)"
-      >
-        <GridItem colSpan={{ md: 3, base: 6 }}>
-          <Center height={"100%"}>
-            <Box textAlign={"left"} w={{ base: "100%", md: "100%" }}>
-              <Heading>{title}</Heading>
+      <Center minH={"100vh"}>
+        <Grid
+          w={{ base: "100%", md: "70%" }}
+          m={"auto"}
+          templateColumns="repeat(6, 1fr)"
+        >
+          <GridItem colSpan={{ md: 3, base: 6 }}>
+            <Center height={"100%"}>
+              <Box textAlign={"left"} w={{ base: "100%", md: "100%" }}>
+                <Heading>{title}</Heading>
 
-              <Text
-                mt={{ base: "25px", md: "7px" }}
-                mb={{ base: "50px", md: 0 }}
-              >
-                {text}
-              </Text>
-            </Box>
-          </Center>
-        </GridItem>
+                <Text
+                  mt={{ base: "25px", md: "7px" }}
+                  mb={{ base: "50px", md: 0 }}
+                >
+                  {text}
+                </Text>
+              </Box>
+            </Center>
+          </GridItem>
 
-        <GridItem colSpan={{ md: 3, base: 6 }}>
-          <Center pos={"relative"}>
-            <Image w={{ md: "300px", base: "150px" }} src={ssshadow} />
-          </Center>
-        </GridItem>
-      </Grid>
+          <GridItem colSpan={{ md: 3, base: 6 }}>
+            <Center pos={"relative"}>
+              <Image w={{ md: "300px", base: "150px" }} src={ssshadow} />
+            </Center>
+          </GridItem>
+        </Grid>
+      </Center>
     </Box>
   );
 };

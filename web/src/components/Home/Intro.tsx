@@ -2,8 +2,11 @@ import React from "react";
 import { Box, Center, Heading, Image } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router";
 
 export const Intro: React.FC = () => {
+  const history = useHistory();
+
   return (
     <Center minH={"50vh"} background={"#000"} color={"white"}>
       <Box textAlign={"center"}>
@@ -16,7 +19,7 @@ export const Intro: React.FC = () => {
         >
           Simplify complex chromic conditions patterns
         </Heading>
-        <Button>
+        <Button onClick={() => history.push("survey")}>
           <span style={{ fontSize: "18px" }}> </span>
           Available on iOS{" "}
         </Button>
