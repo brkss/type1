@@ -25,7 +25,7 @@ export const Application: React.FC = () => {
         textAlign={"center"}
         opacity={".8"}
       >
-        created by @brahimberkasse
+        a @brahimberkasse production
       </Text>
     </BrowserRouter>
   );

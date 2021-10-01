@@ -16,11 +16,11 @@ export const AppView: React.FC = () => {
       />
       <Heading
         textShadow={"-15px 14px 30px #00000073"}
-        fontSize={{ md: "37px", base: "32px" }}
+        fontSize={{ md: "37px", base: "25px" }}
         fontWeight={"bold"}
         pos={"absolute"}
         top={"270px"}
-        left={{ md: "40%", base: "3px" }}
+        left={{ md: "40%", base: "12px" }}
         transform={{ md: "translateX(-40%)", base: "translateX(0%)" }}
       >
         Open Source, <br /> Free For Personal Use <br /> and Self Host!{" "}

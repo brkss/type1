@@ -10,8 +10,8 @@ export const Why: React.FC = () => {
       w={{ lg: "60%", md: "80%", base: "100%" }}
       m={"auto"}
     >
-      <Heading fontSize={"50px"}> Why ?</Heading>
-      <Text mt={"15px"}>
+      <Heading fontSize={{ md: "40px", base: "30px" }}> Why ?</Heading>
+      <Text fontSize={{ base: "14px", md: "16px" }} mt={"15px"}>
         Addressing problems and make informed decisions about your health will
         help you live a healthier life. Self-management may be a little bit
         hard, third-party applications can help you manage symptoms of your

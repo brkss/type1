@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 import { Application } from "./Application";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { GQ_URL } from "./utils/config/defaults";
 
 const client: any = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: GQ_URL,
   cache: new InMemoryCache(),
 });
 
