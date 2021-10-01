@@ -18,8 +18,8 @@ export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
   const start = () => {
     SetShowButton(false);
     gsap.to(headingRef.current as any, {
-      scale: "+=200",
-      duration: 3,
+      scale: "200",
+      duration: 2.3,
       onComplete: () => {
         console.log("log");
         onFinish();

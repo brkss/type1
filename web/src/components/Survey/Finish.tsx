@@ -12,12 +12,9 @@ export const Finish: React.FC<Props> = ({ finished }) => {
       <Center minH={"50vh"}>
         <Box h={"100%"} textAlign={"center"}>
           <Heading mb={3}>Join Open CC</Heading>
-          <Text mb={3}>
-            Your informations won't be shared with any third party!
-          </Text>
           <ButtonNav
             clicked={() => finished()}
-            text={"Finish !"}
+            text={"Join ❤️"}
             visible={true}
           />
         </Box>
