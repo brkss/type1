@@ -1,8 +1,9 @@
 import React from "react";
-import { Heading, Box } from "@chakra-ui/react";
+import { Heading, Box, Text } from "@chakra-ui/react";
 import { gsap } from "gsap";
 import styled from "@emotion/styled";
 import { Animated } from "react-animated-css";
+import * as ReactIcons from "react-icons/all";
 
 interface Props {
   onFinish: () => void;
@@ -20,7 +21,7 @@ export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
     SetShowButton(false);
     gsap.to(headingRef.current as any, {
       //scale: ".9",
-      y: 4,
+      y: -40,
       opacity: 0,
       duration: 0.3,
       onComplete: () => {
@@ -31,9 +32,9 @@ export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
   };
 
   return (
-    <Box>
-      <Heading opacity={0} y={40} fontSize={"50px"} ref={headingRef as any}>
-        Survey
+    <Box textAlign={"center"}>
+      <Heading opacity={0} y={"40px"} fontSize={"50px"} ref={headingRef as any}>
+        Hello
       </Heading>
       <Animated
         animationIn="fadeIn"
@@ -42,6 +43,11 @@ export const SurveyIntro: React.FC<Props> = ({ onFinish }) => {
         animationOutDuration={1000}
         isVisible={showButton}
       >
+        <Text fontSize={"12px"} textAlign={"center"}>
+          {" "}
+          <ReactIcons.BsFillLockFill style={{ display: "inline" }} /> The given
+          data is private safe and secure.{" "}
+        </Text>
         <Button ref={buttonRef as any} onClick={() => start()}>
           Start
         </Button>

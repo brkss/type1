@@ -74,7 +74,7 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
         visible={visible}
       />
       <InputText
-        label={"Email  required so we can send you the invatation !"}
+        label={"Email is required so you can recieve your private invatation !"}
         placeholder={"Email"}
         changed={(value: string) => handleForm("email", value)}
         visible={visible}
