@@ -1,4 +1,4 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Mutation, Query, Resolver, UseMiddleware } from "type-graphql";
 import { DefaultInviteResponse } from "../utils/responses/Invite/default.response";
 import {
   CreateAbandonedInput,
@@ -8,6 +8,7 @@ import { Request } from "../entity/Invite/Request";
 import { Question } from "../entity/Invite/Question";
 import { Answer } from "../entity/Invite/Answer";
 import { Abandoned } from "../entity/Invite/Abandoned";
+import { isUserAuth } from "../utils/middlewares/auth.mw";
 
 @Resolver()
 export class InviteResolver {
@@ -16,6 +17,7 @@ export class InviteResolver {
     return "nope yet!";
   }
 
+  @UseMiddleware(isUserAuth)
   @Query(() => [Request])
   async requests() {
     return await Request.find({

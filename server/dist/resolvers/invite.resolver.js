@@ -20,6 +20,7 @@ const Request_1 = require("../entity/Invite/Request");
 const Question_1 = require("../entity/Invite/Question");
 const Answer_1 = require("../entity/Invite/Answer");
 const Abandoned_1 = require("../entity/Invite/Abandoned");
+const auth_mw_1 = require("../utils/middlewares/auth.mw");
 let InviteResolver = class InviteResolver {
     invite() {
         return "nope yet!";
@@ -99,6 +100,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], InviteResolver.prototype, "invite", null);
 __decorate([
+    (0, type_graphql_1.UseMiddleware)(auth_mw_1.isUserAuth),
     (0, type_graphql_1.Query)(() => [Request_1.Request]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
