@@ -12,6 +12,7 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
   const [visible, SetVisible] = React.useState(true);
   const [abandoned] = useCreateAbandonedRecordMutation();
   const [form, SetForm] = React.useState<any>();
+  const [loading, SetLoading] = React.useState<boolean>(false);
   const toast = useToast();
 
   const handleForm = (id: string, value: string) => {
@@ -31,8 +32,10 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
       });
       return;
     }
+    SetLoading(true);
     abandoned({ variables: { name: form.name, email: form.email } }).then(
       (res) => {
+        SetLoading(false);
         if (res.errors || !res.data) {
           toast({
             title: "Something went wrong !",
@@ -57,7 +60,7 @@ export const Information: React.FC<Props> = ({ onFinish }) => {
   };
 
   return (
-    <Box w={{ md: "40%", base: "80%" }}>
+    <Box w={{ md: "40%", base: "80%" }} opacity={loading ? 0.5 : 1}>
       <Animated
         animationIn="fadeInUp"
         animationOut="fadeOutUp"
