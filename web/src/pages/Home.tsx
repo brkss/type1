@@ -21,7 +21,11 @@ export const Home: React.FC = () => {
       <Why />
       <AppView />
       {ABOUT_SECTIONS.map((section) => (
-        <About title={section.title} text={section.text} />
+        <About
+          image={section.image}
+          title={section.title}
+          text={section.text}
+        />
       ))}
       <Special />
       <ContactUs />

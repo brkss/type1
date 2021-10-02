@@ -1,20 +1,29 @@
 import { IAboutSection } from "../types/About";
+import ss from "../../assets/ss.png";
+import AppleHealthImage from "../../assets/apple_health_final.jpg";
+import RecordImage from "../../assets/records_final.jpg";
+import DemonImage from "../../assets/demons_final.jpg";
+import MLImage from "../../assets/ml_final.jpg";
 
 export const ABOUT_SECTIONS: IAboutSection[] = [
   {
     title: "Better Records.",
     text: "Records help you pinpoint  and understand all the important factors that affect your chronic condition . Having this larger picture lets you sort out what leads to unwanted changes in your health and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    image: RecordImage,
   },
   {
     title: "Active Demons",
     text: "Better records help you visualize how your insulin doses, medications, food intake, carb counts, activity and all the important factors affect your chronic condition . They help pinpoint other things that affect your condition like menses, stress, or an infection. Having this larger picture lets you sort out what leads to unwanted changes in your health. Your A1c level. frequency of hypoglycemia and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    image: DemonImage,
   },
   {
     title: "Machine learning.",
     text: "Better records help you visualize how your insulin doses, medications, food intake, carb counts, activity and all the important factors affect your chronic condition . They help pinpoint other things that affect your condition like menses, stress, or an infection. Having this larger picture lets you sort out what leads to unwanted changes in your health. Your A1c level. frequency of hypoglycemia and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    image: MLImage,
   },
   {
     title: "GCM Compatible.",
     text: "Better records help you visualize how your insulin doses, medications, food intake, carb counts, activity and all the important factors affect your chronic condition . They help pinpoint other things that affect your condition like menses, stress, or an infection. Having this larger picture lets you sort out what leads to unwanted changes in your health. Your A1c level. frequency of hypoglycemia and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    image: AppleHealthImage,
   },
 ];
