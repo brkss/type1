@@ -11,6 +11,11 @@ interface Props {
 
 export const Question: React.FC<Props> = ({ question, next }) => {
   const [answers, SetAnswers] = React.useState<IAnswer[]>([]);
+  const [visible, SetVisible] = React.useState<boolean>(true);
+
+  React.useEffect(() => {
+    SetVisible(true);
+  }, [question]);
 
   const handleSelectAnswer = (answer: IAnswer) => {
     const index = answers.findIndex((x) => x.text == answer.text);
@@ -26,14 +31,20 @@ export const Question: React.FC<Props> = ({ question, next }) => {
     return answers.findIndex((x) => x.text == answer.text) == -1 ? false : true;
   };
 
+  const nextQuestion = () => {
+    next(answers);
+    SetVisible(false);
+    SetAnswers([]);
+  };
+
   return (
-    <Box p={5}>
+    <Box p={5} minW={"60%"}>
       <Animated
-        animationIn="fadeIn"
-        animationOut="fadeOut"
+        animationIn="fadeInUp"
+        animationOut="fadeOutUp"
         animationInDuration={1000}
         animationOutDuration={1000}
-        isVisible={true}
+        isVisible={visible}
         animationInDelay={0}
       >
         <Heading fontSize={"20px"}>{question.text}</Heading>
@@ -43,14 +54,18 @@ export const Question: React.FC<Props> = ({ question, next }) => {
               key={key}
               answer={answer.text}
               description={answer.description}
-              visible={true}
+              visible={visible}
               delay={key * 2}
               selected={checkIfAnswerSelected(answer)}
               choose={() => handleSelectAnswer(answer)}
             />
           ))}
         </Box>
-        <ButtonNav visible={true} text={"Next"} clicked={() => next(answers)} />
+        <ButtonNav
+          visible={visible}
+          text={"Next"}
+          clicked={() => nextQuestion()}
+        />
       </Animated>
     </Box>
   );

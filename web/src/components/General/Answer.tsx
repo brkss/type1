@@ -21,8 +21,8 @@ export const Answer: React.FC<Props> = ({
 }) => {
   return (
     <Animated
-      animationIn="fadeIn"
-      animationOut="fadeOut"
+      animationIn="fadeInUp"
+      animationOut="fadeOutUp"
       animationInDuration={1000}
       animationOutDuration={1000}
       isVisible={visible}

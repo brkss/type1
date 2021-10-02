@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, Heading, Image } from "@chakra-ui/react";
+import { Box, Center, Heading, Image, Text } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
 import styled from "@emotion/styled";
 import { useHistory } from "react-router";
@@ -19,6 +19,7 @@ export const Intro: React.FC = () => {
         >
           Simplify complex chromic conditions patterns
         </Heading>
+        <Text marginTop={"12px"}>Free and Open source !</Text>
         <Button onClick={() => history.push("survey")}>
           <span style={{ fontSize: "18px" }}> </span>
           Available on iOS{" "}

@@ -2,8 +2,10 @@ import React from "react";
 import { Box, Image, Heading, Text } from "@chakra-ui/react";
 import AppViewImg from "../../assets/app-view.png";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router";
 
 export const AppView: React.FC = () => {
+  const history = useHistory();
   return (
     <Box bg={"#fceee7"} minH={"80vh"} pos={"relative"} marginTop={"65px"}>
       <Image
@@ -14,7 +16,9 @@ export const AppView: React.FC = () => {
         left={"50%"}
         transform={"translateX(-50%)"}
       />
-      <Button>Early Access To OpenCC</Button>
+      <Button onClick={() => history.push("survey")}>
+        Early Access To OpenCC
+      </Button>
 
       <Heading
         textShadow={"-15px 14px 30px #00000073"}
