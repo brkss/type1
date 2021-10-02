@@ -17,10 +17,12 @@ export const AppView: React.FC = () => {
         textShadow={"-15px 14px 30px #00000073"}
         fontSize={{ md: "37px", base: "25px" }}
         fontWeight={"bold"}
+        d={"none"}
         pos={"absolute"}
-        top={"270px"}
+        top={""}
         left={{ md: "40%", base: "12px" }}
         transform={{ md: "translateX(-40%)", base: "translateX(0%)" }}
+        bottom={{ md: "30px", base: "15px" }}
       >
         Open Source, <br /> Free For Personal Use <br /> and Self Host!{" "}
       </Heading>

@@ -13,17 +13,17 @@ export const ABOUT_SECTIONS: IAboutSection[] = [
   },
   {
     title: "Active Demons",
-    text: "Better records help you visualize how your insulin doses, medications, food intake, carb counts, activity and all the important factors affect your chronic condition . They help pinpoint other things that affect your condition like menses, stress, or an infection. Having this larger picture lets you sort out what leads to unwanted changes in your health. Your A1c level. frequency of hypoglycemia and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    text: "Demons are made to make your life easier, by reminding you to take your medicine, eat, sleep, mesure your blood glucose and more.",
     image: DemonImage,
   },
   {
     title: "Machine learning.",
-    text: "Better records help you visualize how your insulin doses, medications, food intake, carb counts, activity and all the important factors affect your chronic condition . They help pinpoint other things that affect your condition like menses, stress, or an infection. Having this larger picture lets you sort out what leads to unwanted changes in your health. Your A1c level. frequency of hypoglycemia and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    text: "Machine learning is used to help you prevent or expect unexpected health changes to control and treat them especially the dangerous ones that need immediate treatment like low blood sugar.",
     image: MLImage,
   },
   {
     title: "GCM Compatible.",
-    text: "Better records help you visualize how your insulin doses, medications, food intake, carb counts, activity and all the important factors affect your chronic condition . They help pinpoint other things that affect your condition like menses, stress, or an infection. Having this larger picture lets you sort out what leads to unwanted changes in your health. Your A1c level. frequency of hypoglycemia and overall control are determined by how well your medecations is matched to these lifestyle factors.",
+    text: "Apple Health App helps Open CC to access your blood glucose records saved from your glucose monitors like Dexcom, Open CC support also manual typing and direct read from NFC sensors such as Freestyle Libre.",
     image: AppleHealthImage,
   },
 ];

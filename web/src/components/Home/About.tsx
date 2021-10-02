@@ -30,7 +30,7 @@ export const About: React.FC<Props> = ({ text, title, image }) => {
                 <Heading>{title}</Heading>
 
                 <Text
-                  mt={{ base: "25px", md: "7px" }}
+                  mt={{ md: "25px", base: "7px" }}
                   mb={{ base: "50px", md: 0 }}
                 >
                   {text}
@@ -41,7 +41,11 @@ export const About: React.FC<Props> = ({ text, title, image }) => {
 
           <GridItem colSpan={{ md: 3, base: 6 }}>
             <Center pos={"relative"}>
-              <Image w={{ md: "300px", base: "150px" }} src={image} />
+              <Image
+                w={{ md: "300px", base: "250px" }}
+                mr={{ md: "-35px", base: "-35px" }}
+                src={image}
+              />
             </Center>
           </GridItem>
         </Grid>

@@ -8,7 +8,7 @@ export const Navigation: React.FC = () => {
         <GridItem colSpan={6} textAlign={"left"}>
           <Heading
             fontWeight={"bold"}
-            fontSize={{ md: "1.3rem", base: "1.2rem" }}
+            fontSize={{ md: "1.3rem", base: "1rem" }}
           >
             Open Chronic Conditions.
           </Heading>
