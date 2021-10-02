@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Image, Heading, Text } from "@chakra-ui/react";
 import AppViewImg from "../../assets/app-view.png";
+import styled from "@emotion/styled";
 
 export const AppView: React.FC = () => {
   return (
@@ -13,6 +14,8 @@ export const AppView: React.FC = () => {
         left={"50%"}
         transform={"translateX(-50%)"}
       />
+      <Button>Early Access To OpenCC</Button>
+
       <Heading
         textShadow={"-15px 14px 30px #00000073"}
         fontSize={{ md: "37px", base: "25px" }}
@@ -39,3 +42,17 @@ export const AppView: React.FC = () => {
     </Box>
   );
 };
+
+const Button = styled.button`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  background: #ef9773;
+  padding: 5px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  color: white;
+  transform: translateX(-50%);
+  backdrop-filter: blur(5px);
+  width: auto;
+`;

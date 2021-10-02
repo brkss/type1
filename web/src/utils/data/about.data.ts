@@ -22,7 +22,7 @@ export const ABOUT_SECTIONS: IAboutSection[] = [
     image: MLImage,
   },
   {
-    title: "GCM Compatible.",
+    title: "Compatibility.",
     text: "Apple Health App helps Open CC to access your blood glucose records saved from your glucose monitors like Dexcom, Open CC support also manual typing and direct read from NFC sensors such as Freestyle Libre.",
     image: AppleHealthImage,
   },
