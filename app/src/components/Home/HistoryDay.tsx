@@ -18,7 +18,7 @@ export const HistoryDay: React.FC<Props> = ({ day, month }) => {
 const style = StyleSheet.create({
   day: {
     marginRight: 8,
-    backgroundColor: "#EFEBE8",
+    backgroundColor: "#D5E4FF",
     height: 77,
     width: 77,
     borderRadius: 100,

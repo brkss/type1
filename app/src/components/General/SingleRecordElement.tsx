@@ -18,7 +18,7 @@ export const SingleRecordElement: React.FC<Props> = ({ title, icon }) => {
 const style = StyleSheet.create({
   record: {
     marginRight: 8,
-    backgroundColor: "#EFEBE8",
+    backgroundColor: "#BBEBDD",
     height: 77,
     width: 77,
     borderRadius: 100,
@@ -26,11 +26,12 @@ const style = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    fontSize: 25,
+    fontSize: 35,
     fontWeight: "bold",
   },
   title: {
-    fontSize: 12,
+    fontSize: 10,
     marginTop: -2,
+    fontWeight: "bold",
   },
 });
