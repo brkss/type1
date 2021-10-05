@@ -11,6 +11,7 @@ import {
   DemonsHome,
   HistoryHome,
   CreateRecordHome,
+  CreateSingleRecord,
 } from "../components";
 
 export const Home: React.FC<any> = ({ navigation }) => {
@@ -22,6 +23,7 @@ export const Home: React.FC<any> = ({ navigation }) => {
             <Text>Menu</Text>
           </TouchableOpacity>
           <HistoryHome />
+          <CreateSingleRecord />
           <RecordsHistory />
           <CreateRecordHome onClick={() => navigation.navigate("record")} />
           <DemonsHome clicked={() => navigation.navigate("demons")} />

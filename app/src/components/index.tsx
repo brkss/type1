@@ -8,3 +8,4 @@ export { HistoryHome } from "./Home/HistoryHome";
 export { CreateRecordHome } from "./Home/CreateRecordHome";
 export { FoodDemon, SingleDemon } from "./Demon";
 export { SingleRecord } from "./Record";
+export { CreateSingleRecord } from "./Home/CreateSingleRecord";
