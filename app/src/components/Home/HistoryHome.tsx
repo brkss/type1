@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 import { HistoryDay } from "./HistoryDay";
+import { SectionTitle } from "../General";
 
 const days = [
   {
@@ -37,7 +38,7 @@ const days = [
 export const HistoryHome: React.FC = () => {
   return (
     <View style={style.container}>
-      <Text style={style.title}>History.</Text>
+      <SectionTitle text={"History"} />
       <ScrollView
         horizontal={true}
         style={{ marginTop: 15 }}
@@ -53,11 +54,7 @@ export const HistoryHome: React.FC = () => {
 
 const style = StyleSheet.create({
   container: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
+    marginTop: 15,
+    marginBottom: 5,
   },
 });

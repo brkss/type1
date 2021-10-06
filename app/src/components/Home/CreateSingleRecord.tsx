@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
-import { SingleRecordElement } from "../General";
+import { SingleRecordElement, SectionTitle } from "../General";
 
 const records = [
   {
@@ -28,7 +28,7 @@ const records = [
 export const CreateSingleRecord: React.FC = () => {
   return (
     <View style={style.container}>
-      <Text style={style.title}>Create Record</Text>
+      <SectionTitle text={"Create Record"} />
       <ScrollView
         horizontal={true}
         style={{ marginTop: 15 }}
@@ -47,11 +47,8 @@ export const CreateSingleRecord: React.FC = () => {
 };
 
 const style = StyleSheet.create({
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-  },
   container: {
-    marginBottom: 20,
+    marginBottom: 15,
+    marginTop: 5,
   },
 });

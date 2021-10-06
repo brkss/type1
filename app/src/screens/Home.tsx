@@ -25,9 +25,11 @@ export const Home: React.FC<any> = ({ navigation }) => {
           </TouchableOpacity>
           <HistoryHome />
           <CreateSingleRecord />
-          <RecordsHistory />
-          <CreateRecordHome onClick={() => navigation.navigate("record")} />
           <ActiveDemons />
+          <RecordsHistory />
+          {false ? (
+            <CreateRecordHome onClick={() => navigation.navigate("record")} />
+          ) : null}
           <DemonsHome clicked={() => navigation.navigate("demons")} />
         </View>
       </View>

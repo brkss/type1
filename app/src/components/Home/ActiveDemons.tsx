@@ -1,7 +1,6 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet } from "react-native";
-
-import { ActiveDemonElement } from "../General";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { ActiveDemonElement, SectionTitle } from "../General";
 
 const demons = [
   {
@@ -25,7 +24,7 @@ const demons = [
 export const ActiveDemons: React.FC = () => {
   return (
     <View style={style.container}>
-      <Text style={style.title}>Active Demons</Text>
+      <SectionTitle text={"Active Demons"} />
       <ScrollView
         horizontal={true}
         style={{ marginTop: 15 }}
@@ -40,11 +39,8 @@ export const ActiveDemons: React.FC = () => {
 };
 
 const style = StyleSheet.create({
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-  },
   container: {
-    marginBottom: 20,
+    marginBottom: 15,
+    marginTop: 5,
   },
 });
