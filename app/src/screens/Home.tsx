@@ -12,6 +12,7 @@ import {
   HistoryHome,
   CreateRecordHome,
   CreateSingleRecord,
+  ActiveDemons,
 } from "../components";
 
 export const Home: React.FC<any> = ({ navigation }) => {
@@ -26,6 +27,7 @@ export const Home: React.FC<any> = ({ navigation }) => {
           <CreateSingleRecord />
           <RecordsHistory />
           <CreateRecordHome onClick={() => navigation.navigate("record")} />
+          <ActiveDemons />
           <DemonsHome clicked={() => navigation.navigate("demons")} />
         </View>
       </View>
