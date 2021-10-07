@@ -6,22 +6,27 @@ const records = [
   {
     title: "Food",
     icon: "🥗",
+    page: "record/food",
   },
   {
     title: "Shot",
     icon: "💉",
+    page: "record/shot",
   },
   {
     title: "Activity",
     icon: "⛹️‍♂️",
+    page: "record/activity",
   },
   {
     title: "Behavior",
     icon: "😥",
+    page: "record/behavior",
   },
   {
     title: "env",
     icon: "🌍",
+    page: "record/env",
   },
 ];
 

@@ -6,22 +6,30 @@ const demons = [
   {
     title: "Food",
     icon: "👹",
+    nid: "food",
   },
   {
     title: "Sleep",
     icon: "👹",
+    nid: "sleep",
   },
   {
     title: "Insulin",
     icon: "👹",
+    nid: "insulin",
   },
   {
     title: "Thyroid",
     icon: "👹",
+    nid: "thyroid",
   },
 ];
 
-export const ActiveDemons: React.FC = () => {
+interface Props {
+  navigation: any;
+}
+
+export const ActiveDemons: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={style.container}>
       <SectionTitle text={"Active Demons"} />
@@ -31,7 +39,12 @@ export const ActiveDemons: React.FC = () => {
         showsHorizontalScrollIndicator={false}
       >
         {demons.map((d, key) => (
-          <ActiveDemonElement key={key} title={d.title} icon={d.icon} />
+          <ActiveDemonElement
+            key={key}
+            title={d.title}
+            clicked={() => navigation.navigate("demon", { name: d.nid })}
+            icon={d.icon}
+          />
         ))}
       </ScrollView>
     </View>

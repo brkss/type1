@@ -10,7 +10,7 @@ export const AppNavigationStack: React.FC = () => {
       <Screen name="home" component={Home} />
       <Screen name="menu" component={Menu} />
       <Screen name="demons" component={Demons} />
-      <Screen name="config-demon" component={ConfigureDemon} />
+      <Screen name="demon" component={ConfigureDemon} />
       <Screen name="record" component={Record} />
     </Navigator>
   );

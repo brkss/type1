@@ -1,17 +1,22 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 
 interface Props {
   title: string;
   icon: string;
+  clicked: () => void;
 }
 
-export const ActiveDemonElement: React.FC<Props> = ({ title, icon }) => {
+export const ActiveDemonElement: React.FC<Props> = ({
+  title,
+  icon,
+  clicked,
+}) => {
   return (
-    <View style={style.demon}>
+    <TouchableOpacity onPress={() => clicked()} style={style.demon}>
       <Text style={style.icon}>{icon}</Text>
       <Text style={style.title}>{title}.</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
