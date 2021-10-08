@@ -11,7 +11,7 @@ export const ConfigureDemon: React.FC<any> = ({ route }) => {
       <View style={style.wrap}>
         <View style={style.demonInfo}>
           <Text style={style.demonImage}>👹</Text>
-          <Text style={style.demonName}>{name.toUpperCase()} Demon.</Text>
+          <Text style={style.demonName}>{name.toUpperCase()}</Text>
           <Text style={style.demonDescription}>
             This demon job is keep tracking your meals schedule.
           </Text>
