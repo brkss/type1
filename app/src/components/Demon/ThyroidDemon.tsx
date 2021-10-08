@@ -1,37 +1,33 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import { View, StyleSheet } from "react-native";
+import { TimeLined, AddButton } from "./Elements";
 
 export const ThyroidDemon: React.FC = () => {
+  const [times, SetTime] = React.useState<Date[]>([new Date()]);
   return (
     <View style={style.container}>
-      <View style={style.reminderContainer}>
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={new Date()}
-          mode={"time"}
-          is24Hour={false}
-          display="clock"
-          style={{ margin: 0, height: 50 }}
-        />
-        <View style={style.reminderLine} />
-      </View>
+      {times.map((time, key) => (
+        <TimeLined key={key} />
+      ))}
+      <AddButton />
     </View>
   );
 };
+
 const style = StyleSheet.create({
   container: {
     marginTop: 20,
   },
-  reminderContainer: {},
-  reminderTime: {
-    fontSize: 30,
-    fontWeight: "bold",
+  addButton: {
+    width: 70,
+    padding: 7,
+    borderRadius: 5,
+    marginTop: 8,
+    backgroundColor: "#dbdbdb",
   },
-  reminderLine: {
-    height: 100,
-    width: 4,
-    marginLeft: 4,
-    backgroundColor: "#7a7979",
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "black",
   },
 });
