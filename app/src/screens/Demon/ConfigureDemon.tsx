@@ -1,20 +1,28 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { FoodDemon } from "../../components";
+import { ThyroidDemon } from "../../components/Demon";
 
 export const ConfigureDemon: React.FC<any> = ({ route }) => {
+  const [name, SetName] = React.useState<string>(route.params.name);
+
   return (
     <ScrollView style={style.container}>
       <View style={style.wrap}>
         <View style={style.demonInfo}>
           <Text style={style.demonImage}>👹</Text>
-          <Text style={style.demonName}>{route.params.name} Demon.</Text>
+          <Text style={style.demonName}>{name.toUpperCase()} Demon.</Text>
           <Text style={style.demonDescription}>
             This demon job is keep tracking your meals schedule.
           </Text>
         </View>
         <View>
-          <FoodDemon />
+          {
+            {
+              food: <FoodDemon />,
+              thyroid: <ThyroidDemon />,
+            }[name]
+          }
         </View>
       </View>
     </ScrollView>
