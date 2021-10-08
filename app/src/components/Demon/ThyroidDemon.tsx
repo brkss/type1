@@ -3,13 +3,29 @@ import { View, StyleSheet } from "react-native";
 import { TimeLined, AddButton } from "./Elements";
 
 export const ThyroidDemon: React.FC = () => {
-  const [times, SetTime] = React.useState<Date[]>([new Date()]);
+  const [times, SetTimes] = React.useState<Date[]>([new Date()]);
+
+  const addTime = () => {
+    SetTimes([...times, new Date()]);
+  };
+
+  const deleteTime = (index: number) => {
+    times.splice(index, 1);
+    SetTimes(times);
+  };
+
   return (
     <View style={style.container}>
       {times.map((time, key) => (
-        <TimeLined key={key} />
+        <TimeLined
+          key={key}
+          del={() => {
+            console.log("key : ", key);
+            deleteTime(key);
+          }}
+        />
       ))}
-      <AddButton />
+      <AddButton add={() => addTime()} />
     </View>
   );
 };

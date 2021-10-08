@@ -1,11 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-export const TimeLined: React.FC = () => {
+interface Props {
+  del: () => void;
+}
+
+export const TimeLined: React.FC<Props> = ({ del }) => {
   return (
-    <View style={style.reminderContainer}>
+    <TouchableOpacity onLongPress={() => del()} style={style.reminderContainer}>
       <DateTimePicker
         testID="dateTimePicker"
         value={new Date()}
@@ -15,7 +18,7 @@ export const TimeLined: React.FC = () => {
         style={{ margin: 0, height: 50 }}
       />
       <View style={style.reminderLine} />
-    </View>
+    </TouchableOpacity>
   );
 };
 
