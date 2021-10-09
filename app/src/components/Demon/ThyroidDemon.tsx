@@ -2,16 +2,30 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { TimeLined, AddButton } from "./Elements";
 
+interface ITime {
+  title: string;
+  time: Date;
+}
+
 export const ThyroidDemon: React.FC = () => {
-  const [times, SetTimes] = React.useState<Date[]>([new Date()]);
+  const [times, SetTimes] = React.useState<ITime[]>([]);
 
   const addTime = () => {
-    SetTimes([...times, new Date()]);
+    SetTimes([
+      ...times,
+      {
+        title: "Meds Reminder !",
+        time: new Date(),
+      },
+    ]);
   };
 
   const deleteTime = (index: number) => {
-    times.splice(index, 1);
-    SetTimes(times);
+    console.log("key from delete => ", index);
+    console.log("time array => ", times);
+    const tmp = times;
+    tmp.splice(index, 1);
+    SetTimes(tmp);
   };
 
   return (
