@@ -22,10 +22,9 @@ export const ThyroidDemon: React.FC = () => {
 
   const deleteTime = (index: number) => {
     console.log("key from delete => ", index);
-    console.log("time array => ", times);
     const tmp = times;
     tmp.splice(index, 1);
-    SetTimes(tmp);
+    SetTimes([...tmp]);
   };
 
   return (
