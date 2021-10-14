@@ -10,9 +10,9 @@ services:
     depends_on:
       - db
     environment:
-      - DB_NAME=opium
+      - DB_NAME=opencc
       - DB_USER=ye
-      - DB_PASS=kanye@@
+      - DB_PASS=123test
       - DB_HOST=db
   db:
     build: ./database
